@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    text-align: center;
+  }
+  
+  .containerh {
+    background-color: #005080;
+    color: white;
+    padding: 20px;
+  }
+  
+  .containerf {
+    background-color: #005080;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .negrito {
+    font-weight: bold;
+  }
+  .b1, .b2 {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #005080;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+  .b1:hover, .b2:hover{
+    background-color: #053f81;
+    transform: translate(0, -2px);
+  }
+  
+  .eventos-container {
+    display: flex;           /* Ativa o flexbox */
+    gap: 20px;               /* Espaço entre os eventos */
+    flex-wrap: wrap;         /* Faz os eventos quebrarem linha se não couberem na tela */
+    justify-content: center; /* Centraliza os eventos */
+  }
+  .quadrado-evento {
+    background-color: #005080;
+    border: 2px solid #053f81;
+    border-radius: 10px;
+    padding: 20px;
+    width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    color: white;
+  }
+  .quadrado-evento:hover {
+    transform: translate(0, -5px);
+    background-color: #053f81;
+  }
