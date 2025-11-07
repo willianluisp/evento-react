@@ -4,7 +4,7 @@ function Footer() {
     return (
       <div className="containerf">
         <footer>
-          <p className="negrito">Willian Luis - 2025</p>
+          <p className="negrito">Willian Luis - Técnico em Desenvolvimento de Sistemas - {ano}</p>
         </footer>
       </div>
     ); //Fecha return

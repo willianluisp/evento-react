@@ -37,7 +37,7 @@ body {
   
   .b1:hover, .b2:hover{
     background-color: #053f81;
-    transform: translate(0, -2px);
+    transform: scale(1.1);
   }
   
   .eventos-container {
@@ -53,10 +53,10 @@ body {
     padding: 20px;
     width: 200px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
+    transition: transform 0.2s ease, background-color 0.3s ease; /* aumento da duração e suavização adicionada, agora também anima mudança de cor */
     color: white;
   }
   .quadrado-evento:hover {
-    transform: translate(0, -5px);
+    transform: scale(1.1);
     background-color: #053f81;
   }
