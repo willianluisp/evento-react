@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom"; //importando
+ {
+  /*import { Link } from "react-router-dom"; //importando
 
 function Header() {
   return (
@@ -10,4 +11,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Header; */ }

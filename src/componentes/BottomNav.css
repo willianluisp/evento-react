@@ -1,0 +1,29 @@
+/* Estilo principal da barra inferior */
+.bottom-nav {
+    position: fixed;              /* Fixa a barra no fundo da tela */
+    bottom: 0;                    /* Alinha exatamente na parte de baixo */
+    left: 0;                      /* Garante que comece na borda esquerda */
+    width: 100%;                  /* Ocupa toda a largura da tela */
+    background-color: #ffffff;    /* Fundo branco */
+    border-top: 1px solid #ccc;   /* Linha cinza separando do conteúdo acima */
+    display: flex;                /* Usa flexbox para alinhar os itens lado a lado */
+    justify-content: space-around;/* Distribui os itens com espaços iguais entre eles */
+    align-items: center;          /* Centraliza os ícones verticalmente */
+    padding: 8px 0;               /* Espaçamento interno (em cima e embaixo) */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve acima da barra */
+    z-index: 1000;                /* Mantém a barra sobre outros elementos */
+  }
+  
+/* Ícones da barra (usando Material Icons) */
+.material-icons {
+    font-size: 24px;              /* Tamanho dos ícones */
+    margin-bottom: 2px;           /* Pequeno espaço entre ícone e texto */
+    color: #0a0a0a;               /* Cor dos ícones */
+  }
+
+/* FEITO COM O CHATGPT */
+/* Quando o item estiver "ativo" (selecionado) */
+.nav-item.active .material-icons,
+.nav-item.active p {
+  color: #004d99;               /* Muda a cor para azul (ativo) */
+}

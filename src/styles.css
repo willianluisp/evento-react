@@ -5,21 +5,7 @@ body {
     color: #333;
     text-align: center;
   }
-  
-  .containerh {
-    background-color: #005080;
-    color: white;
-    padding: 20px;
-  }
-  
-  .containerf {
-    background-color: #005080;
-    color: white;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-  }
-  
+ 
   .negrito {
     font-weight: bold;
   }

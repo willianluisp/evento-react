@@ -1,0 +1,58 @@
+/*Tudo chat-gpt kkkkk
+
+/* Estiliza a barra superior (header) */
+.top-bar {
+    display: flex;                 /* Deixa os elementos em linha (horizontal) */
+    align-items: center;           /* Centraliza verticalmente os elementos */
+    justify-content: space-between;/* Espaça os elementos entre as extremidades */
+    background-color: #3b6ca8;     /* Cor azul SENAI para o fundo */
+    padding: 8px 12px;             /* Espaçamento interno (em cima/baixo e nas laterais) */
+    border-top-left-radius: 15px;  /* Bordas arredondadas no canto superior esquerdo */
+    border-top-right-radius: 15px; /* Bordas arredondadas no canto superior direito */
+    color: white;                  /* Cor padrão do texto e ícones dentro da barra */
+  }
+  
+  /* Estilo para a imagem do logo SENAI */
+  .logo {
+    width: 50px;                   /* Largura fixa para o logo */
+    height: auto;                  /* Altura automática para manter proporção */
+    border-radius: 4px;            /* Cantos levemente arredondados */
+  }
+  
+  /* Container da caixa de busca (input + ícone) */
+  .search-box {
+    flex: 1;                      /* Ocupa o máximo possível de espaço entre logo e sino */
+    display: flex;                /* Flexbox para alinhar input e ícone na mesma linha */
+    align-items: center;          /* Centraliza verticalmente input e ícone */
+    background-color: white;      /* Fundo branco para a caixa de busca */
+    border-radius: 20px;          /* Bordas arredondadas para um visual moderno */
+    margin: 0 10px;               /* Margem lateral para afastar dos elementos vizinhos */
+    padding: 4px 8px;             /* Espaçamento interno da caixa */
+    border: 2px;
+    border-color: none;          /* Sem borda visível */
+  }
+  
+  /* Estilo do campo de texto input dentro da caixa de busca */
+  .search-box input {
+    flex: 1;                     /* O input ocupa todo o espaço disponível */
+    border: none;                /* Remove borda padrão do input */
+    outline: none;               /* Remove contorno azul ao focar (outline) */
+    padding: 5px;                /* Espaçamento interno do texto digitado */
+    border-radius: 20px;         /* Bordas arredondadas igual à caixa */
+    font-size: 14px;             /* Tamanho da fonte do texto digitado */
+  }
+  
+  /* Ícone da lupa dentro da caixa de busca */
+  .search-icon {
+    color: black;                /* Cor preta para a lupa */
+    font-size: 20px;             /* Tamanho da fonte do ícone */
+    cursor: pointer;             /* Cursor muda para "mãozinha" ao passar por cima */
+  }
+  
+  /* Ícone do sino (notificações) */
+  .bell-icon {
+    color: black;                /* Cor preta para o sino */
+    font-size: 24px;             /* Ícone um pouco maior */
+    cursor: pointer;             /* Cursor "mãozinha" para indicar clicável */
+  }
+  
