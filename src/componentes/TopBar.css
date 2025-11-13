@@ -7,8 +7,6 @@
     justify-content: space-between;/* Espaça os elementos entre as extremidades */
     background-color: #3b6ca8;     /* Cor azul SENAI para o fundo */
     padding: 8px 12px;             /* Espaçamento interno (em cima/baixo e nas laterais) */
-    border-top-left-radius: 15px;  /* Bordas arredondadas no canto superior esquerdo */
-    border-top-right-radius: 15px; /* Bordas arredondadas no canto superior direito */
     color: white;                  /* Cor padrão do texto e ícones dentro da barra */
   }
   
@@ -44,14 +42,14 @@
   
   /* Ícone da lupa dentro da caixa de busca */
   .search-icon {
-    color: black;                /* Cor preta para a lupa */
+    color: #053f81;                /* Cor azul para a lupa */
     font-size: 20px;             /* Tamanho da fonte do ícone */
     cursor: pointer;             /* Cursor muda para "mãozinha" ao passar por cima */
   }
   
   /* Ícone do sino (notificações) */
   .bell-icon {
-    color: black;                /* Cor preta para o sino */
+    color: #f9f9f9;                /* Cor branca para o sino */
     font-size: 24px;             /* Ícone um pouco maior */
     cursor: pointer;             /* Cursor "mãozinha" para indicar clicável */
   }

@@ -1,0 +1,15 @@
+.promocao {
+    width: 864px;
+    height: 420px;
+  }
+  
+  @media (max-width: 768px) {
+    .promocao {
+      width: 264px;
+      height: 150px; /* reduz a altura no celular */
+    }
+  }
+
+.p {
+    margin-bottom: 15px;
+}

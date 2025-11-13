@@ -5,8 +5,9 @@ import Evento from "../componentes/Evento";
 function Home() {
   return (
     <main>
-      <h1>Bem vindo ao Gerenciador de Eventos</h1>
-      <p>Aqui você fica por dentro dos eventos.</p>
+
+    <h1 style={{ color: '#053f81' }}>Bem vindo ao Gerenciador de Eventos</h1>
+    <p  style={{ color: '#053f81' }}>Aqui você fica por dentro dos eventos.</p>
 
       {/* Exibindo os eventos*/}
       {/* Container para exibir os eventos lado a lado */}
