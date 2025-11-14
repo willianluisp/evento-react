@@ -7,6 +7,8 @@ function Sobre() {
           Esse sistema foi desenvolvido para auxiliar na organização dos eventos
         </p>
         <p style={{ color: '#053f81' }}>Projeto do curso de Técnico em Desenvolvimento de Sistemas</p>
+
+        <p><b>Projeto pensado e criado pelo grupo MAWR</b></p>
       </main>
     );
   }
