@@ -1,21 +1,29 @@
-.perfil-main {
-    min-height: 100vh;
+/* ==========================
+   PERFIL - ESTILIZAÇÃO GERAL
+   ========================== */
+
+   .perfil-main {
+    min-height: 100vh;          /* Ocupa a tela inteira */
     padding: 30px 20px;
     color: white;
+    background: #f0f4f8;        /* Fundo claro opcional */
 }
 
-/* Container central */
+/* Container centralizado */
 .perfil-container {
     text-align: center;
 }
 
-/* Avatar */
+/* ==========================
+   AVATAR
+   ========================== */
 .perfil-avatar {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+/* Ícone "Adicionar foto" abaixo do avatar */
 .add-photo {
     font-size: 14px;
     margin-top: -10px;
@@ -24,23 +32,41 @@
     gap: 5px;
 }
 
-/* Título */
+/* Ícone principal do avatar */
+.material-icons.avatar-icon {
+    font-size: 180px;
+    color: #3b6ca8;
+}
+
+/* Ícone do "adicionar foto" */
+.material-icons.add-photo-icon {
+    font-size: 18px;
+    color: #3b6ca8;
+}
+
+/* ==========================
+   TÍTULO DO PERFIL
+   ========================== */
 .perfil-title {
     font-size: 28px;
     margin-top: 10px;
     font-weight: bold;
 }
 
-/* GRID */
+/* ==========================
+   GRID DE CARDS
+   ========================== */
 .perfil-grid {
     margin-top: 35px;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas */
     gap: 22px;
     margin-bottom: 50px;
 }
 
-/* CARDS */
+/* ==========================
+   CARDS
+   ========================== */
 .perfil-card {
     background: #3b6ca8;
     border-radius: 12px;
@@ -48,16 +74,52 @@
     color: white;
     text-align: center;
     font-weight: bold;
+    cursor: grab;
+    transition: all 0.3s ease; /* Animação apenas nos cards */
 }
 
-.perfil-card:hover{
+/* Animação de hover apenas nos cards */
+.perfil-card:hover {
     background: #053f81;
     border-color: #053f81;
     transform: translateY(-6px);
     box-shadow: 0 2px 8px rgba(5, 63, 129, 0.3);
 }
 
+/* Ícones dentro dos cards */
 .card-icon {
     font-size: 36px;
     margin-bottom: 8px;
 }
+
+/* Força ícones dos cards como brancos */
+.perfil-card .material-icons {
+    font-size: 36px;
+    margin-bottom: 8px;
+    color: white;
+}
+
+/* ==========================
+   REMOVER ANIMAÇÃO DO AVATAR
+   ========================== */
+.perfil-avatar * {
+    transition: none !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.perfil-avatar:hover {
+    background: none !important;
+    border-color: initial !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+/*=========================
+   Explicação do código acima
+   =========================
+Força que nenhum elemento dentro do avatar (ícones, textos, botões) tenha transition ou transform.
+
+Remove qualquer efeito visual ao passar o mouse (hover).
+
+Garante que o avatar fique estático, enquanto os cards ainda animam normalmente.
+*/

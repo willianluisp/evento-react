@@ -6,7 +6,7 @@ function Home() {
   return (
     <main>
 
-    <h1 style={{ color: '#053f81' }}>Bem vindo ao Gerenciador de Eventos</h1>
+    <h1 style={{ color: '#053f81' }}>Bem vindo ao <b>MAWR EventHub</b></h1>
     <p  style={{ color: '#053f81' }}>Aqui você fica por dentro dos eventos.</p>
 
       {/* Exibindo os eventos*/}

@@ -9,7 +9,7 @@ body {
   .negrito {
     font-weight: bold;
   }
-  .b1, .b2 {
+  .b2 {
     display: inline-block;
     padding: 10px 20px;
     margin: 5px;
@@ -19,6 +19,7 @@ body {
     font-weight: bold;
     text-align: center;
     text-decoration: none;
+    cursor: help;
   }
   
    .b2:hover{

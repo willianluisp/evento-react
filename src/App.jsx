@@ -16,6 +16,7 @@ import Sobre from "./paginas/Sobre";
 import Promocoes from "./paginas/Promocoes";
 import Agendas from "./paginas/Agendas";
 import Perfil from "./paginas/Perfil"; // <-- IMPORTANTE
+import CadastrarEvento from "./paginas/CadastrarEvento"; 
 
 // Componentes fixos
 import BottomNav from "./componentes/BottomNav";
@@ -23,6 +24,9 @@ import TopBar from "./componentes/TopBar";
 
 // Ícones do Material Icons
 import "material-icons/iconfont/material-icons.css";
+                                                     //mas primeiro instale com: npm install material-icons
+
+
 
 // ==================================================================
 // ======================   COMPONENTE LAYOUT   ======================
@@ -48,7 +52,6 @@ function Layout() {
 
   return (
     <div className="app">
-
       {/* TopBar só na home */}
       {showTopBar && <TopBar />}
 
@@ -66,14 +69,15 @@ function Layout() {
         <Route path="/promocoes" element={<Promocoes />} />
         <Route path="/agendas" element={<Agendas />} />
         <Route path="/perfil" element={<Perfil />} /> {/* <-- ROTA DO PERFIL */}
+        <Route path="/CadastrarEvento" element={<CadastrarEvento />} />
       </Routes>
 
+      {location.pathname !== "/CadastrarEvento" && <BottomNav />}
+
       {/* Menu inferior fixo */}
-      <BottomNav />
     </div>
   );
 }
-
 
 // ==================================================================
 // ========================   COMPONENTE APP   ========================

@@ -1,0 +1,86 @@
+.cadastrarEvento-container {
+    margin-top: 20px;
+    width: 550px;
+    justify-self: center;
+    margin: 20px;
+    background: rgba(0, 150, 200, 0.1);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px;
+    font-family: Arial;
+}
+
+.cadastrarEvento-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #003366;
+    font-size: 28px;
+}
+
+.form-evento {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-evento label {
+    font-weight: bold;
+    color: #053f81;
+    text-align: left;
+    font-size: 16px;
+}
+
+.form-evento input {
+    padding: 12px;
+    border: 1px solid;
+    border-radius: 6px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.botoes {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.btn-voltar, .btn-salvar {
+    background-color: #3b6ca8;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-salvar:hover {
+    background-color: #053f81;
+    transform: translateY(-1px);
+}
+
+.btn-voltar:hover {
+    background-color: #053f81;
+    transform: translate(-1px);
+}
+
+.voltar-btn {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    cursor: pointer;
+    color: #3b6ca8;
+    font-size: 32px;  
+}
+
+.voltar-btn:hover {
+    color: #043a63;
+}
+
+.page-wrapper {
+    height: 100vh;           /* ocupa a tela inteira */
+    display: flex;
+    justify-content: center; /* centro horizontal */
+    align-items: center;     /* centro vertical */
+}
