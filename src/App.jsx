@@ -10,7 +10,7 @@ import {
   useLocation,
 } from "react-router-dom";
 
-// Importação das suas páginas
+// Importação das páginas
 import Home from "./paginas/Home";
 import Sobre from "./paginas/Sobre";
 import Promocoes from "./paginas/Promocoes";

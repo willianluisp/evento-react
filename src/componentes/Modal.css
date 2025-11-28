@@ -1,0 +1,55 @@
+/* Fundo escuro que cobre a tela inteira */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente escuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  /* Caixa do modal */
+  .modal {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+  
+    /* Posição inicial para animação */
+    transform: translateY(-50px);
+    opacity: 0;
+  
+    /* Animação */
+    animation: slideDown 0.3s forwards;
+  }
+  
+  /* Animação que faz o modal "descer" e aparecer */
+  @keyframes slideDown {
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Botão de fechar */
+  .close-btn {
+    margin-top: 1.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #053f81;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .close-btn:hover {
+    background-color: #032d59;
+  }
+  
