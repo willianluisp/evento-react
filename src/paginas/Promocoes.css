@@ -1,6 +1,7 @@
 .promocao {
     width: 864px;
     height: 420px;
+    border-radius: 15px;
   }
   
   @media (max-width: 768px) {

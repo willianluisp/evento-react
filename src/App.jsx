@@ -15,8 +15,10 @@ import Home from "./paginas/Home";
 import Sobre from "./paginas/Sobre";
 import Promocoes from "./paginas/Promocoes";
 import Agendas from "./paginas/Agendas";
-import Perfil from "./paginas/Perfil"; // <-- IMPORTANTE
-import CadastrarEvento from "./paginas/CadastrarEvento"; 
+import Perfil from "./paginas/Perfil";
+import CadastrarEvento from "./paginas/CadastrarEvento";
+import TelaCadastro from "./paginas/TelaCadastro";
+import TelaLogin from "./paginas/TelaLogin";
 
 // Componentes fixos
 import BottomNav from "./componentes/BottomNav";
@@ -24,68 +26,84 @@ import TopBar from "./componentes/TopBar";
 
 // Ícones do Material Icons
 import "material-icons/iconfont/material-icons.css";
-                                                     //mas primeiro instale com: npm install material-icons
-
 
 
 // ==================================================================
-// ======================   COMPONENTE LAYOUT   ======================
+// ====================== COMPONENTE LAYOUT ==========================
 // ==================================================================
 //
-// O Layout controla:
-//  ✔️ Se a TopBar aparece (somente na Home)
-//  ✔️ Se o botão Sobre aparece (somente no Perfil)
-//  ✔️ Rotas
-//  ✔️ BottomNav
+// Aqui é onde decidimos:
+//  ✔ Quando mostrar TopBar
+//  ✔ Quando mostrar BottomNav
+//  ✔ Quando mostrar o botão Sobre
+//  ✔ Quais páginas podem aparecer
 //
-// Aqui é onde usamos useLocation(), que NÃO podia ser usado no App.
+// O Layout consegue fazer isso porque podemos usar useLocation()
+// para detectar QUAL página está sendo exibida.
 // ==================================================================
 
 function Layout() {
-  const location = useLocation(); // Descobre a rota atual
+  const location = useLocation(); // identifica a rota atual
 
-  // TopBar só aparece na Home
-  const showTopBar = location.pathname === "/";
+  //  VERIFICAÇÃO MAIS IMPORTANTE DO PROJETO
+  // Se estiver no "/", significa que estamos na tela de login
+  const isLoginPage = location.pathname === "/";
 
-  // Botão Sobre só aparece no Perfil
+  // TopBar só aparece na Home — e nunca no login
+  const showTopBar = location.pathname === "/home" && !isLoginPage;
+
+  // O botão Sobre só aparece no Perfil
   const showSobreButton = location.pathname === "/perfil";
 
   return (
     <div className="app">
-      {/* TopBar só na home */}
+
+      {/* ==================== TOPBAR ==================== */}
+      {/* Só aparece na Home e NÃO aparece no Login */}
       {showTopBar && <TopBar />}
 
-      {/* Botão "Sobre" só na página Perfil */}
+
+      {/* ================= BOTÃO SOBRE (Página Perfil) ================= */}
       {showSobreButton && (
         <nav>
           <Link to="/sobre" className="b2">Sobre</Link>
         </nav>
       )}
 
-      {/* Suas rotas principais */}
+
+      {/* ===================== ROTAS ===================== */}
       <Routes>
-        <Route path="/" element={<Home />} />
+        {/* 🔥 LOGIN — é a primeira página e não mostra nenhum menu */}
+        <Route path="/" element={<TelaCadastro />} />
+
+        {/* Outras telas */}
+        <Route path="/home" element={<Home />} />
         <Route path="/sobre" element={<Sobre />} />
         <Route path="/promocoes" element={<Promocoes />} />
         <Route path="/agendas" element={<Agendas />} />
-        <Route path="/perfil" element={<Perfil />} /> {/* <-- ROTA DO PERFIL */}
+        <Route path="/perfil" element={<Perfil />} />
         <Route path="/CadastrarEvento" element={<CadastrarEvento />} />
       </Routes>
 
-      {location.pathname !== "/CadastrarEvento" && <BottomNav />}
 
-      {/* Menu inferior fixo */}
+      {/* ================== BOTTOM NAV ==================== */}
+      {/* NÃO aparece no login e NÃO aparece em CadastrarEvento */}
+      {!isLoginPage && location.pathname !== "/CadastrarEvento" && (
+        <BottomNav />
+      )}
+
     </div>
   );
 }
 
+
+
 // ==================================================================
-// ========================   COMPONENTE APP   ========================
+// ========================== APP WRAPPER ============================
 // ==================================================================
 //
-// O App só cria o Router e renderiza o Layout.
-// O erro anterior era tentar controlar a TopBar dentro do App,
-// que está acima do Router e não pode usar useLocation.
+// O App apenas cria o Router e coloca o Layout dentro dele.
+// Nada mais precisa ser mexido aqui.
 // ==================================================================
 
 export default function App() {

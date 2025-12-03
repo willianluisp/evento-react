@@ -19,8 +19,8 @@ export default function BottomNav() {
       {/* ====== BOTÃO INÍCIO ====== */}
       {/* Se a rota atual for "/", adiciona a classe 'active' */}
       <div
-        className={`nav-item ${location.pathname === "/" ? "active" : ""}`}
-        onClick={() => navigate("/")}
+        className={`nav-item ${location.pathname === "/home" ? "active" : ""}`}
+        onClick={() => navigate("/home")}
       >
         <span className="material-icons">home</span>
         <p>Início</p>
