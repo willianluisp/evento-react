@@ -48,6 +48,7 @@ function Layout() {
   //  VERIFICAÇÃO MAIS IMPORTANTE DO PROJETO
   // Se estiver no "/", significa que estamos na tela de login
   const isLoginPage = location.pathname === "/";
+  const isLoginPageAlt = location.pathname === "/TelaLogin";
 
   // TopBar só aparece na Home — e nunca no login
   const showTopBar = location.pathname === "/home" && !isLoginPage;
@@ -73,7 +74,7 @@ function Layout() {
 
       {/* ===================== ROTAS ===================== */}
       <Routes>
-        {/* 🔥 LOGIN — é a primeira página e não mostra nenhum menu */}
+        {/*  LOGIN — é a primeira página e não mostra nenhum menu */}
         <Route path="/" element={<TelaCadastro />} />
 
         {/* Outras telas */}
@@ -83,6 +84,7 @@ function Layout() {
         <Route path="/agendas" element={<Agendas />} />
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/CadastrarEvento" element={<CadastrarEvento />} />
+        <Route path="/TelaLogin" element={<TelaLogin />} />
       </Routes>
 
 

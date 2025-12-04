@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom"; // IMPORTAR NAVIGATE    
 import "./TelaLogin.css";
 
 function TelaLogin() {
@@ -18,7 +19,7 @@ function TelaLogin() {
                 <input type="email" placeholder="E-mail" />
                 <input type="password" placeholder="Senha" />
 
-                <button>Cadastrar</button>
+                <button>Entrar</button>
             </div>
         </main>
     );

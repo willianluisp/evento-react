@@ -1,10 +1,13 @@
 /* ==========================
    PERFIL - ESTILIZAÇÃO GERAL
    ========================== */
+   body {
+    background-color: #f0f4f8; /* Cor de fundo clara para toda a página */
+   }
 
    .perfil-main {
-    min-height: 100vh;          /* Ocupa a tela inteira */
-    padding: 30px 20px;
+    min-height: 88vh;          /* Ocupa a tela inteira */
+    padding: 20px 20px;
     color: white;
     background: #f0f4f8;        /* Fundo claro opcional */
 }
@@ -14,6 +17,10 @@
     text-align: center;
 }
 
+/*Função que remove a opção de arrastar a página para o lado*/
+html, body {
+}
+
 /* ==========================
    AVATAR
    ========================== */
@@ -21,6 +28,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: -20px;
 }
 
 /* Ícone "Adicionar foto" abaixo do avatar */
@@ -42,6 +50,16 @@
 .material-icons.add-photo-icon {
     font-size: 18px;
     color: #3b6ca8;
+}
+
+/* Ícone do "Sair de Conta" */
+.material-icons.add-exit_to_app {
+    font-size: 18px;
+    color: #3b6ca8;
+    position: relative;
+    right: 4px;
+    font-size: 30px;
+    margin-top: -35px;
 }
 
 /* ==========================
@@ -114,6 +132,7 @@
     transform: none !important;
     box-shadow: none !important;
 }
+
 /*=========================
    Explicação do código acima
    =========================
@@ -123,3 +142,39 @@ Remove qualquer efeito visual ao passar o mouse (hover).
 
 Garante que o avatar fique estático, enquanto os cards ainda animam normalmente.
 */
+
+
+.sairConta{
+    font-size: 15px;
+    color: #3b6ca8;
+    position: relative;
+    left: 880px;
+    top: 30px;
+    margin-top: -35px;
+    cursor: pointer;
+}
+
+
+@media (max-width: 900px) {
+    body {
+        background-color: #f0f4f8; /* Cor de fundo clara para toda a página */     
+
+    }
+    .sairConta {
+      position: relative;
+      font-size: 9px;
+      margin-top: -65px;
+      left: 140px;
+      font-size: smaller;
+    }
+    .p {
+        font-size: 5px !important;;
+    }
+    .perfil-avatar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+    }
+  }
+  

@@ -62,3 +62,7 @@ h1 {
     z-index: 3;
     font-size: 17;
 }
+
+.Login {
+    cursor: pointer;
+}

@@ -8,11 +8,23 @@ function Perfil() {
   function irParaCadastrarEvento() {
     navigate("/CadastrarEvento"); // navega para a rota /CadastrarEvento
   }
+  function irParaTelaCadastro() {
+    navigate("/");
+  }
 
   return (
     <main className="perfil-main">
       <div className="perfil-container">
 
+        <div className="sairConta" onClick={irParaTelaCadastro}>
+
+        <span className="material-icons add-exit_to_app">
+        <b>exit_to_app</b>
+        </span>
+        <p className="Sair-Conta" style={{ fontSize: '15px', marginTop: '0px'}}><b>Sair da Conta</b></p>
+
+        </div>
+        
         {/* Avatar */}
         <div className="perfil-avatar">
           <span className="material-icons avatar-icon">account_circle</span>
@@ -21,6 +33,8 @@ function Perfil() {
             <span className="material-icons add-photo-icon">photo_camera</span>
             <b>Adicionar foto</b>
           </span>
+          
+
         </div>
 
         <h2 className="perfil-title" style={{color:'#3b6ca8'}}>Perfil</h2>

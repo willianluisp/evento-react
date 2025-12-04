@@ -4,6 +4,10 @@ import { useNavigate } from "react-router-dom";
 
 function TelaCadastro() {
 
+function irParaTelaLogin() {
+    navigate("/TelaLogin");
+}
+
     const navigate = useNavigate();   // << usar o hook
 
     function handleCadastrar() {
@@ -33,7 +37,10 @@ function TelaCadastro() {
                 {/* Botão com navegação */}
                 <button onClick={handleCadastrar}>Cadastrar</button>
 
-                <a href="/login" style={{color:'#3b6ca8'}}>Já tem uma conta ?</a>
+                <div onClick={irParaTelaLogin}>
+                    <a className="Login">Já tem uma conta ?</a>
+                </div>
+            
             </div>
         </main>
     );
