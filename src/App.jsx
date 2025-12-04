@@ -18,7 +18,7 @@ import Agendas from "./paginas/Agendas";
 import Perfil from "./paginas/Perfil";
 import CadastrarEvento from "./paginas/CadastrarEvento";
 import TelaCadastro from "./paginas/TelaCadastro";
-import TelaLogin from "./paginas/TelaLogin";
+import Login from "./paginas/Login";
 
 // Componentes fixos
 import BottomNav from "./componentes/BottomNav";
@@ -48,7 +48,7 @@ function Layout() {
   //  VERIFICAÇÃO MAIS IMPORTANTE DO PROJETO
   // Se estiver no "/", significa que estamos na tela de login
   const isLoginPage = location.pathname === "/";
-  const isLoginPageAlt = location.pathname === "/TelaLogin";
+  const isLoginPageAlt = location.pathname === "/Login";
 
   // TopBar só aparece na Home — e nunca no login
   const showTopBar = location.pathname === "/home" && !isLoginPage;
@@ -84,7 +84,7 @@ function Layout() {
         <Route path="/agendas" element={<Agendas />} />
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/CadastrarEvento" element={<CadastrarEvento />} />
-        <Route path="/TelaLogin" element={<TelaLogin />} />
+        <Route path="/Login" element={<Login />} />
       </Routes>
 
 
@@ -93,20 +93,13 @@ function Layout() {
       {!isLoginPage && location.pathname !== "/CadastrarEvento" && (
         <BottomNav />
       )}
+      
+
 
     </div>
   );
 }
 
-
-
-// ==================================================================
-// ========================== APP WRAPPER ============================
-// ==================================================================
-//
-// O App apenas cria o Router e coloca o Layout dentro dele.
-// Nada mais precisa ser mexido aqui.
-// ==================================================================
 
 export default function App() {
   return (

@@ -15,38 +15,43 @@
     object-fit: cover;
 }
 
-.card {
+.TelaLogin {
     position: relative;
     z-index: 2;
     background: white;
     width: 350px;
     padding: 15px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     margin: 0 auto;
-    top: 50%;
+    top: 315px;
     transform: translateY(-100%);
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-.card h1 {
+.TelaLogin h1 {
     text-align: center;
     color: #3b6ca8;
 }
 
-.card input {
+.TelaLogin input {
     padding: 12px;
     border-radius: 6px;
     border: 1px solid #ccc;
 }
 
-.card button {
+.TelaLogin button {
     padding: 12px;
     background: #3b6ca8;
     color: white;
     border: none;
     border-radius: 6px;
+    cursor: pointer;
+}
+
+.voltar-btn {
+    top: -65px;
+    left: -110px;
     cursor: pointer;
 }

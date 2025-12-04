@@ -22,11 +22,12 @@
     position: absolute;  /* posicionamento livre */
     z-index: 2;
 
-    top: 65.5% !important;      /* agora você pode subir ou descer */
-    left: 0%;     /* ajusta horizontalmente para o monitor */
+    top: 310px;      /* agora você pode subir ou descer */
+    left: 775px;     /* ajusta horizontalmente para o monitor */
     transform: none; /* sem nenhum translate que bloqueie vertical */
+    margin-top: -7px;
 
-    width: 250px;
+    width: 350px;
     padding: 2px !important;
     background: #fffefe;
     border-radius: 12px;

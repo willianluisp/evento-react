@@ -1,10 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom"; // IMPORTAR NAVIGATE    
-import "./TelaLogin.css";
+import "./Login.css";
 
-function TelaLogin() {
+function Login() {
+
+    const navigate = useNavigate();
+
     return (
-        <main className="tela-Login">
+        <main className="tela-login">
 
             {/* Fundo */}
             <img 
@@ -14,7 +17,16 @@ function TelaLogin() {
             />
 
             {/* Conteúdo */}
-            <div className="card">
+            <div className="TelaLogin">
+
+            <div className="voltar-btn" onClick={() => navigate(-1)}>
+          <span className="material-icons" style={{ color: "#053f81", fontSize: '32px'}}>
+            arrow_back
+          </span>
+        </div>
+
+            <h1><b>Mawr EventHub</b></h1>
+
 
                 <input type="email" placeholder="E-mail" />
                 <input type="password" placeholder="Senha" />
@@ -25,4 +37,4 @@ function TelaLogin() {
     );
 }
 
-export default TelaLogin;
+export default Login;
