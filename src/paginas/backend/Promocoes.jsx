@@ -1,5 +1,5 @@
-import Evento from "../componentes/Evento";
-import "./Promocoes.css";
+import Evento from "../../componentes/backend/Evento";
+import "../frontend/Promocoes.css";
 
 
 function Promocoes() {

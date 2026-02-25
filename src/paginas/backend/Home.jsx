@@ -1,5 +1,5 @@
 //Importa o componente 'Evento' que será utilizado dentro deste componente.
-import Evento from "../componentes/Evento";
+import Evento from "../../componentes/backend/Evento";
 
 //criando função Home 
 function Home() {

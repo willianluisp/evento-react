@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./cadastrarEvento.css";
+import "../frontend/cadastrarEvento.css";
 import { useNavigate } from "react-router-dom";
-import Modal from "../componentes/Modal";
+import Modal from "../../componentes/backend/Modal";
 
 function CadastrarEvento() {
   const [nome, setNome] = useState("");

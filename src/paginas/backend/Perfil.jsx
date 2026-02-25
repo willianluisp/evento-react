@@ -1,4 +1,4 @@
-import "./Perfil.css";
+import "../frontend/Perfil.css";
 import React from "react";
 import { useNavigate } from "react-router-dom"; // IMPORTAR
 

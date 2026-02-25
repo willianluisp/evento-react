@@ -11,18 +11,18 @@ import {
 } from "react-router-dom";
 
 // Importação das páginas
-import Home from "./paginas/Home";
-import Sobre from "./paginas/Sobre";
-import Promocoes from "./paginas/Promocoes";
-import Agendas from "./paginas/Agendas";
-import Perfil from "./paginas/Perfil";
-import CadastrarEvento from "./paginas/CadastrarEvento";
-import TelaCadastro from "./paginas/TelaCadastro";
-import Login from "./paginas/Login";
+import Home from "./paginas/backend/Home";
+import Sobre from "./paginas/backend/Sobre";
+import Promocoes from "./paginas/backend/Promocoes";
+import Agendas from "./paginas/backend/Agendas";
+import Perfil from "./paginas/backend/Perfil";
+import CadastrarEvento from "./paginas/backend/CadastrarEvento";
+import TelaCadastro from "./paginas/backend/TelaCadastro";
+import Login from "./paginas/backend/Login";
 
 // Componentes fixos
-import BottomNav from "./componentes/BottomNav";
-import TopBar from "./componentes/TopBar";
+import BottomNav from "./componentes/backend/BottomNav";
+import TopBar from "./componentes/backend/TopBar";
 
 // Ícones do Material Icons
 import "material-icons/iconfont/material-icons.css";

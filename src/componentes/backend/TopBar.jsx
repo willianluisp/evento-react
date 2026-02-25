@@ -1,5 +1,5 @@
 import React from "react";         // Importa o React para usar JSX
-import "./TopBar.css";             // Importa o arquivo de estilos CSS para este componente
+import "../frontend/TopBar.css";             // Importa o arquivo de estilos CSS para este componente
 
 // Define o componente funcional TopBar e o exporta
 export default function TopBar() {
@@ -9,7 +9,7 @@ export default function TopBar() {
       
       {/* Imagem do logo SENAI à esquerda */}
       <img 
-        src="/logo-senai.png"     // Caminho para a imagem do logo (pasta public)
+        src="/images/logo-senai.png"     // Caminho para a imagem do logo (pasta public)
         className="logo"          // Classe CSS para estilizar a imagem
       />
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom"; // IMPORTAR NAVIGATE    
-import "./Login.css";
+import "../frontend/Login.css";
 
 function Login() {
 

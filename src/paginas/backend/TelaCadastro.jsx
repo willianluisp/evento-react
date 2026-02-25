@@ -1,5 +1,5 @@
 import React from "react";
-import "./TelaCadastro.css";
+import "../frontend/TelaCadastro.css";
 import { useNavigate } from "react-router-dom";
 
 function TelaCadastro() {
@@ -19,7 +19,7 @@ function irParaTelaLogin() {
         <main className="tela-cadastro">
             {/* Fundo */}
             <img 
-                src="/Fundo-login.png" 
+                src="/images/Fundo-login.png" 
                 alt="Fundo"
                 className="fundo"
             />

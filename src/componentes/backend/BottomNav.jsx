@@ -7,7 +7,7 @@ import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 // Importa o arquivo CSS do menu inferior
-import "./BottomNav.css";
+import "../frontend/BottomNav.css";
 
 export default function BottomNav() {
   const navigate = useNavigate();     // Função para mudar de rota
