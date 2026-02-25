@@ -29,9 +29,10 @@ body {
   
   .eventos-container {
     display: flex;           /* Ativa o flexbox */
-    gap: 20px;               /* Espaço entre os eventos */
+    gap: 35px;               /* Espaço entre os eventos */
     flex-wrap: wrap;         /* Faz os eventos quebrarem linha se não couberem na tela */
     justify-content: center; /* Centraliza os eventos */
+    margin-top: 30px;
   }
   .quadrado-evento {
     background-color: #3b6ca8;

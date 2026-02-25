@@ -13,16 +13,38 @@ export default function TopBar() {
         className="logo"          // Classe CSS para estilizar a imagem
       />
 
-      {/* Container da caixa de busca central */}
+      {/* ========== */}
+
+      {/* Container das duas caixas de busca*/}
+      <div className="search-container">
+      {/*   caixa de busca  */}
       <div className="search-box">
         {/* Input de texto para o usuário digitar a pesquisa */}
         <input 
           type="text" 
-          placeholder="Pesquisar..." // Texto que aparece quando o campo está vazio
+          placeholder="Pesquisar por nome" // Texto que aparece quando o campo está vazio
         />
         {/* Ícone da lupa, usando Material Icons */}
         <span className="material-icons search-icon">search</span>
       </div>
+
+
+      {/* ========== */}
+
+
+      <div className="search-box">
+        {/* Input de texto para o usuário digitar a pesquisa */}
+        <input 
+          type="text" 
+          placeholder="Pesquisar por local" // Texto que aparece quando o campo está vazio
+        />
+        {/* Ícone da lupa, usando Material Icons */}
+        <span className="material-icons search-icon">search</span>
+      </div>
+
+      </div>
+
+      {/* ========== */}
 
       {/* Ícone do sino de notificações à direita */}
       <span className="material-icons bell-icon">notifications</span>

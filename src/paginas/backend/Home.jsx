@@ -1,29 +1,35 @@
-//Importa o componente 'Evento' que será utilizado dentro deste componente.
 import Evento from "../../componentes/backend/Evento";
 
-//criando função Home 
-function Home() {
+function Home({ total, primeiroEvento, eventos }) {
   return (
     <main>
 
-    <h1 style={{ color: '#053f81' }}>Bem vindo ao <b>MAWR EventHub</b></h1>
-    <p  style={{ color: '#053f81' }}>Aqui você fica por dentro dos eventos.</p>
+      <h1 style={{ color: '#053f81' }}>Bem vindo ao <b>MAWR EventHub</b></h1>
+      <p style={{ color: '#053f81' }}>Aqui você fica por dentro dos eventos.</p>
 
-      {/* Exibindo os eventos*/}
-      {/* Container para exibir os eventos lado a lado */}
-      <div className="eventos-container">
-        <div className="quadrado-evento">
-        <Evento nome="Mundo Senai" data="05/11/2025" local="Auditório Sesi Senai"/>
-        </div>
-        <div className="quadrado-evento">
-        <Evento nome="Agro Chaaama" data="06/12/2025" local="Parque Efapi" />
-        </div>
-        <div className="quadrado-evento">
-        <Evento nome="Palestra" data="05/12/2025" local="Unoesc" />
-        </div>
+      <div className="box">
+        Total de eventos cadastrados: <strong>{total}</strong>
       </div>
+      <div className="box">
+        Próximo evento: <strong>{primeiroEvento}</strong>
+      </div>
+
+      {/* Renderiza dinamicamente todos os eventos do App.jsx */}
+      <div className="eventos-container">
+        {eventos.map((evento) => (
+          <div className="quadrado-evento" key={evento.id}>
+            <Evento
+              nome={evento.titulo}
+              data={evento.data}
+              local={evento.local}
+              descricao={evento.descricao}
+            />
+          </div>
+        ))}
+      </div>
+
     </main>
   );
 }
-//Exportando para quando for usar em um componente ou em outro arquivo
+
 export default Home;

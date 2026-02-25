@@ -12,7 +12,7 @@ function Promocoes() {
       <br />
       <p>Clique aqui para saber mais 👇</p>
       <img 
-        src="/senai-promocao.jpg"     // Caminho para a imagem do logo (pasta public)
+        src="/images/senai-promocao.jpg"     // Caminho para a imagem do logo (pasta public)
         className="promocao"          // Classe CSS para estilizar a imagem
         onClick={() => window.open("https://sc.senai.br/descontos", "_blank")}
         style={{ cursor: 'pointer' }}

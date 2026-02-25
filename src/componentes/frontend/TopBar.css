@@ -17,7 +17,14 @@
     border-radius: 4px;            /* Cantos levemente arredondados */
   }
   
-  /* Container da caixa de busca (input + ícone) */
+  /* Container das duas caixas de busca */
+  .search-container {
+  flex: 1;
+  display: flex;
+  gap: 10px;
+  margin: 0 10px;
+}
+  /* caixa de busca (input + ícone) */
   .search-box {
     flex: 1;                      /* Ocupa o máximo possível de espaço entre logo e sino */
     display: flex;                /* Flexbox para alinhar input e ícone na mesma linha */

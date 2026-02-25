@@ -1,89 +1,135 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../frontend/cadastrarEvento.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Modal from "../../componentes/backend/Modal";
 
-function CadastrarEvento() {
-  const [nome, setNome] = useState("");
-  const [data, setData] = useState("");
-  const [local, setLocal] = useState("");
-  
-  // Estado que controla o modal aberto ou fechado
-  const [open, setOpen] = useState(false);
+export default function CadastroEvento({ onAdd, onEdit }) {
 
   const navigate = useNavigate();
+  const location = useLocation();
 
-  function Enviar(e) {
+  const eventoParaEditar = location.state?.eventoParaEditar;
+
+  const [titulo, setTitulo] = useState("");
+  const [data, setData] = useState("");
+  const [local, setLocal] = useState("");
+  const [descricao, setDescricao] = useState("");
+  const [status, setStatus] = useState("aberto");
+  const [open, setOpen] = useState(false); // modal
+
+  // 🔹 Preenche os campos se estiver editando  
+  useEffect(() => {
+    if (eventoParaEditar) {
+      setTitulo(eventoParaEditar.titulo);
+      setData(eventoParaEditar.data);
+      setLocal(eventoParaEditar.local);
+      setDescricao(eventoParaEditar.descricao || "");
+      setStatus(eventoParaEditar.status || "aberto");
+    }
+  }, [eventoParaEditar]);
+
+  function handleSubmit(e) {
     e.preventDefault();
 
-    // Aqui você NÃO salva nada, só "simula"
-    // Limpa os campos (opcional)
-    setNome("");
+    if (!titulo || !data || !local || !descricao) {
+      alert("Preencha todos os campos");
+      return;
+    }
+
+    if (eventoParaEditar) {
+      onEdit({
+        ...eventoParaEditar,
+        titulo,
+        data,
+        local,
+        descricao,
+        status,
+        editado: true
+      });
+    } else {
+      onAdd({
+        titulo,
+        data,
+        local,
+        descricao,
+        status,
+        editado: false
+      });
+    }
+
+    setOpen(true); // abre modal
+  }
+
+  function limparCampos() {
+    setTitulo("");
     setData("");
     setLocal("");
-
-    // Abre o modal
-    setOpen(true);
+    setDescricao("");
+    setStatus("aberto");
   }
 
   return (
     <div className="page-wrapper">
       <div className="cadastrarEvento-container">
 
-        <div className="voltar-btn" onClick={() => navigate(-1)}>
-          <span className="material-icons" style={{ color: "#053f81" }}>
-            arrow_back
-          </span>
-        </div>
+        <h2>
+          {eventoParaEditar ? "Editar Evento" : "Cadastrar Evento"}
+        </h2>
 
-        <h2>Cadastrar Evento</h2>
+        <form onSubmit={handleSubmit} className="form-evento">
 
-        <form onSubmit={Enviar} className="form-evento">
-          <label style={{ color: "#053f81" }}>Título do Evento:</label>
-          <input
-            type="text"
-            value={nome}
-            onChange={(e) => setNome(e.target.value)}
-            required
-          />
+          <label>Título</label>
+          <input value={titulo} onChange={(e) => setTitulo(e.target.value)} />
 
-          <label style={{ color: "#053f81" }}>Data:</label>
-          <input
-            type="date"
-            value={data}
-            onChange={(e) => setData(e.target.value)}
-            required
-          />
+          <label>Data</label>
+          <input type="date" value={data} onChange={(e) => setData(e.target.value)} />
 
-          <label style={{ color: "#053f81" }}>Local:</label>
-          <input
-            type="text"
-            value={local}
-            onChange={(e) => setLocal(e.target.value)}
-            required
-          />
+          <label>Local</label>
+          <input value={local} onChange={(e) => setLocal(e.target.value)} />
 
-          <button type="submit" className="btn-salvar">
-            Salvar Evento
-          </button>
+          <label>Descrição</label>
+          <input value={descricao} onChange={(e) => setDescricao(e.target.value)} />
 
-          <button
-            type="button"
-            className="btn-salvar"
-            onClick={() => navigate("/Perfil")}
-          >
-            Voltar
-          </button>
+          <label>Status</label>
+          <select value={status} onChange={(e) => setStatus(e.target.value)}>
+            <option value="aberto">Aberto</option>
+            <option value="lotado">Lotado</option>
+          </select>
+
+          <div className="botoes">
+
+            <button
+              type="button"
+              className="btn-voltar"
+              onClick={() => navigate("/home")}
+            >
+              Voltar
+            </button>
+
+            <button type="submit" className="btn-salvar">
+              {eventoParaEditar ? "Atualizar" : "Salvar"}
+            </button>
+
+            <button
+              type="button"
+              className="btn-limpar"
+              onClick={limparCampos}
+            >
+              Limpar Campos
+            </button>
+          </div>
         </form>
 
-        {/* Modal que aparece após clicar em salvar */}
-        <Modal open={open} onClose={() => setOpen(false)}>
-          <h2>Evento cadastrado com sucesso!</h2>
-          <p>Seu evento foi salvo (simulação).</p>
+        {/* Modal de sucesso */}
+        <Modal open={open} onClose={() => navigate("/evento")}>
+          <h2>
+            {eventoParaEditar
+              ? "Evento atualizado com sucesso!"
+              : "Evento cadastrado com sucesso!"}
+          </h2>
         </Modal>
+
       </div>
     </div>
   );
 }
-
-export default CadastrarEvento;

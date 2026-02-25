@@ -14,6 +14,9 @@ function Evento(props) {
 
         <p>Local: {props.local}</p>{" "}
         {/*Mostra a local a partir dos dados recebidos do props*/}
+
+        <p>Descrição: {props.descricao}</p>{" "}
+        {/*Mostra a descrição a partir dos dados recebidos do props*/}
       
       </div>
     );
