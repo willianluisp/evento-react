@@ -3,7 +3,8 @@
    ========================== */
    body {
     background-color: #f0f4f8; /* Cor de fundo clara para toda a página */
-   }
+    overflow: hidden;
+}
 
    .perfil-main {
     min-height: 88vh;          /* Ocupa a tela inteira */

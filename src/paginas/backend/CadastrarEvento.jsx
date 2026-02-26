@@ -121,7 +121,7 @@ export default function CadastroEvento({ onAdd, onEdit }) {
         </form>
 
         {/* Modal de sucesso */}
-        <Modal open={open} onClose={() => navigate("/evento")}>
+        <Modal open={open} onClose={() => navigate("/home")}>
           <h2>
             {eventoParaEditar
               ? "Evento atualizado com sucesso!"

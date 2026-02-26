@@ -34,6 +34,7 @@ body {
     justify-content: center; /* Centraliza os eventos */
     margin-top: 30px;
   }
+  
   .quadrado-evento {
     background-color: #3b6ca8;
     border: none;
@@ -49,3 +50,39 @@ body {
     background-color: #053f81;
   }
 
+  /* Botões */
+  .btn { 
+    border: 0; 
+    padding: 10px 12px; 
+    border-radius: 12px; 
+    cursor: pointer; 
+    background: #1f6feb; 
+    color: white;   
+    }
+  .btn.danger { 
+    background: #da3633; 
+
+    }
+
+    #btnRemover {
+        justify-self: center;
+        width: 130px;
+        padding: 4px 5px;
+    }
+
+    #btnRemover:hover {
+      transform: translateY(-3px);
+      background-color: #c12b28;
+    }
+
+    #btnRemover2 {
+      justify-self: center;
+      width: 200px;
+      padding: 6px 7px;
+      margin: 25px;
+  }
+
+  #btnRemover2:hover {
+    transform: translateY(-3px);
+    background-color: #c12b28;
+  }
