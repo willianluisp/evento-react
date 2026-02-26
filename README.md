@@ -17,12 +17,15 @@ Sistema de gerenciamento de eventos com funcionalidades de cadastro, calendário
 - HTML
 
 ## 💻 Instalação
-'''
+
+```
 - bash
 - npm install
 - npm install material-icons
 - npm start
-'''
+
+```
+
 ## 📁 Estrutura do Projeto
 
 ```
