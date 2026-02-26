@@ -7,8 +7,8 @@ Projeto desenvolvido como trabalho acadêmico do curso técnico, utilizando Reac
 Sistema de gerenciamento de eventos com funcionalidades de cadastro, calendário, promoções e perfil de usuário, com cadastro de eventos, senhas e muito mais.
 
 ## ⚙️ Funcionalidades
-Cadastrar eventos
-Verificar eventos na agenda 
+- Cadastrar eventos
+- Verificar eventos na agenda 
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -18,10 +18,10 @@ Verificar eventos na agenda
 
 ## 💻 Instalação
 '''
-bash
-npm install
-npm install material-icons
-npm start
+- bash
+- npm install
+- npm install material-icons
+- npm start
 '''
 ## 📁 Estrutura do Projeto
 
@@ -43,8 +43,9 @@ src/
     ├── Sobre
     └── TelaCadastro
 ```
+- Com pastas separados..
 
 ## 👨‍🎓 Autor
 
-Desenvolvido como trabalho de curso — SENAI
-Grupo MAWR
+- Desenvolvido como trabalho de curso — SENAI
+- Grupo MAWR
