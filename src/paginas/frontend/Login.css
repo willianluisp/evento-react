@@ -55,3 +55,7 @@
     left: -110px;
     cursor: pointer;
 }
+
+#btnLogin:hover{
+    background: #2a4e7c;
+}

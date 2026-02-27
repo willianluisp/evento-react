@@ -7,17 +7,17 @@ function Evento(props) {
     
     <div> {/*Início da div que agrupa os elementos do componente*/}
 
+      
+
       <h3 style={{fontSize: "23px"}}>{props.nome}</h3>{" "}
       {/*Exibe o nome do evento a partir dos dados recebidos do props*/}
 
-      <p style={{fontSize: "15px"}}><strong>Descrição:</strong> {props.descricao}</p>{" "}
-      {/*Mostra a descrição a partir dos dados recebidos do props*/}
+      {/* Data e local na mesma linha, com estilo muted */}
+      <p className="muted">
+      {props.data} • {props.local}
+      </p>
+      
 
-      <p style={{fontSize: "15px"}}><strong>Local:</strong> {props.local}</p>{" "}
-      {/*Mostra a local a partir dos dados recebidos do props*/}
-
-      <p style={{fontSize: "12px"}}><strong>data:</strong> {props.data}</p>{" "}
-      {/*Mostra a data a apartir dos dados recebidos do props*/}
 
     </div>
   );

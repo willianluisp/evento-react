@@ -1,88 +1,234 @@
+/* Reset básico para garantir que a página role normalmente */
+html {
+  height: 100%;
+  overflow-y: auto;
+}
+
 body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f9f9f9;
-    color: #053f81;
-    text-align: center;
-  }
- 
-  .negrito {
-    font-weight: bold;
-  }
-  .b2 {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 5px;
-    background-color: #3b6ca8;
-    color: white;
-    border-radius: 5px;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    cursor: help;
-  }
-  
-   .b2:hover{
-    background-color: #053f81;
-    transform: scale(1.1);
-  }
-  
-  .eventos-container {
-    display: flex;           /* Ativa o flexbox */
-    gap: 35px;               /* Espaço entre os eventos */
-    flex-wrap: wrap;         /* Faz os eventos quebrarem linha se não couberem na tela */
-    justify-content: center; /* Centraliza os eventos */
-    margin-top: 30px;
-  }
-  
-  .quadrado-evento {
-    background-color: #3b6ca8;
-    border: none;
-    border-radius: 10px;
-    padding: 20px;
-    width: 200px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease, background-color 0.3s ease; /* aumento da duração e suavização adicionada, agora também anima mudança de cor */
-    color: white;
-  }
-  .quadrado-evento:hover {
-    transform: scale(1.1);
-    background-color: #053f81;
-  }
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f9f9f9;
+  color: #053f81;
+  text-align: center;
+  min-height: 100%;
+  overflow-y: auto;
+}
 
-  /* Botões */
-  .btn { 
-    border: 0; 
-    padding: 10px 12px; 
-    border-radius: 12px; 
-    cursor: pointer; 
-    background: #1f6feb; 
-    color: white;   
-    }
-  .btn.danger { 
-    background: #da3633; 
+/* O container principal do app precisa crescer com o conteúdo */
+.app {
+  min-height: 100vh;
+  height: auto;
+  overflow-y: auto;
+}
 
-    }
+.negrito {
+  font-weight: bold;
+}
 
-    #btnRemover {
-        justify-self: center;
-        width: 130px;
-        padding: 4px 5px;
-    }
+.b2 {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 5px;
+  background-color: #3b6ca8;
+  color: white;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  cursor: help;
+}
 
-    #btnRemover:hover {
-      transform: translateY(-3px);
-      background-color: #c12b28;
-    }
+.b2:hover {
+  background-color: #053f81;
+  transform: scale(1.1);
+}
 
-    #btnRemover2 {
-      justify-self: center;
-      width: 200px;
-      padding: 6px 7px;
-      margin: 25px;
+/* Grade de cards na página home */
+.eventos-container {
+  display: flex;
+  gap: 35px;
+  flex-wrap: wrap;         /* quebra linha quando não cabe na tela */
+  justify-content: center;
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+/* Card individual de cada evento */
+.quadrado-evento {
+  background-color: #3b6ca8;
+  border: none;
+  border-radius: 10px;
+  padding: 20px;
+  width: 200px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  color: white;
+}
+
+.quadrado-evento:hover {
+  transform: scale(1.1);
+  background-color: #053f81;
+}
+
+/* Botões dentro dos cards — empilhados verticalmente */
+.botoes {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* Ver Detalhes e Editar ficam lado a lado na linha de cima */
+.botoes-topo {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+}
+
+.btn {
+  border: 0;
+  padding: 10px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  background: #1f6feb;
+  color: white;
+}
+
+.btn.danger {
+  background: #da3633;
+}
+
+#btnDetalhes, #btnEditar {
+  width: 90px;
+  padding: 4px 5px;
+}
+
+#btnDetalhes:hover, #btnEditar:hover {
+  transform: translateY(-3px);
+  background-color: #1a5bb8;
+}
+
+/* Botão remover individual — fica sozinho embaixo */
+#btnRemover {
+  width: 130px;
+  padding: 4px 5px;
+  margin-top: 10px;
+}
+
+#btnRemover:hover {
+  transform: translateY(-3px);
+  background-color: #c12b28;
+}
+
+/* Botão de remover todos — fica acima dos cards */
+#btnRemover2 {
+  justify-self: center;
+  width: 200px;
+  padding: 6px 7px;
+  margin: 25px;
+}
+
+#btnRemover2:hover {
+  transform: translateY(-3px);
+  background-color: #c12b28;
+}
+
+.muted {
+  color: #f9f9f9;
+  font-size: small;
+}
+
+/* ===================== PÁGINA DE DETALHE ===================== */
+
+.detalhe-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e3f2fd, #f4f9ff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.detalhe-card {
+  background: white;
+  width: 100%;
+  max-width: 650px;
+  padding: 40px;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.detalhe-titulo {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #0b3d91;
+  font-size: 28px;
+}
+
+.detalhe-info {
+  margin-bottom: 22px;
+}
+
+.detalhe-info p {
+  margin-top: 6px;
+  color: #444;
+  line-height: 1.6;
+}
+
+.label {
+  font-weight: 600;
+  color: #0b3d91;
+  font-size: 15px;
+}
+
+/* Badge de status do evento — verde para aberto, vermelho para fechado */
+.status {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+}
+
+.status.aberto {
+  background-color: #e6f9ed;
+  color: #1b8f3a;
+}
+
+.status.fechado {
+  background-color: #fdeaea;
+  color: #c62828;
+}
+
+/* Botão voltar da página de detalhe */
+.voltar {
+  margin-bottom: 25px;
+  background-color: #0b3d91;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.voltar:hover {
+  background-color: #072c6b;
+  transform: translateY(-2px);
+}
+
+/* Animação suave ao entrar na página de detalhe */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
   }
-
-  #btnRemover2:hover {
-    transform: translateY(-3px);
-    background-color: #c12b28;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
+}

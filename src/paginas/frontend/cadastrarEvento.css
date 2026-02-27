@@ -41,11 +41,13 @@
 
 .botoes {
     display: flex;
-    gap: 40px;
-    justify-content: center;
+    flex-direction: row;
+    gap: 6px;
+    align-items: center;
     margin-top: 10px;
-    margin-bottom: 10px;
-}
+    flex-wrap: nowrap;       /* não quebra linha */
+    justify-content: center;
+  }
 
 .btn-voltar, .btn-salvar, .btn-limpar {
     background-color: #3b6ca8;
@@ -85,8 +87,9 @@
     transform: translateY(-2px);
 }
 .page-wrapper {
-    height: 100vh;           /* ocupa a tela inteira */
+    min-height: 100vh;       /* cresce conforme o conteúdo */
     display: flex;
-    justify-content: center; /* centro horizontal */
-    align-items: center;     /* centro vertical */
+    justify-content: center;
+    align-items: flex-start; /* não prende no centro vertical */
+    padding: 20px 0;         /* respiro em cima e embaixo */
 }

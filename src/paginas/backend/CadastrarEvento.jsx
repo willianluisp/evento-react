@@ -8,16 +8,21 @@ export default function CadastroEvento({ onAdd, onEdit }) {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // Se o usuário clicou em "Editar" em algum evento, ele chega aqui com os dados
   const eventoParaEditar = location.state?.eventoParaEditar;
 
+  // Aqui ficam guardados os valores que o usuário digita no formulário
   const [titulo, setTitulo] = useState("");
   const [data, setData] = useState("");
   const [local, setLocal] = useState("");
   const [descricao, setDescricao] = useState("");
   const [status, setStatus] = useState("aberto");
-  const [open, setOpen] = useState(false); // modal
+  const [capacidadeTotal, setCapacidadeTotal] = useState(""); // quantas pessoas o evento comporta
+  const [mapaUrl, setMapaUrl] = useState("");                 // link do local no Google Maps
+  const [fotosTexto, setFotosTexto] = useState("");           // o usuário cola uma foto por linha
+  const [open, setOpen] = useState(false);                    // controla se o modal aparece ou não
 
-  // 🔹 Preenche os campos se estiver editando  
+  // Quando o componente abre no modo edição, preenchemos os campos com os dados do evento
   useEffect(() => {
     if (eventoParaEditar) {
       setTitulo(eventoParaEditar.titulo);
@@ -25,18 +30,32 @@ export default function CadastroEvento({ onAdd, onEdit }) {
       setLocal(eventoParaEditar.local);
       setDescricao(eventoParaEditar.descricao || "");
       setStatus(eventoParaEditar.status || "aberto");
+      setCapacidadeTotal(eventoParaEditar.capacidadeTotal || "");
+      setMapaUrl(eventoParaEditar.mapaUrl || "");
+      // O array de fotos vira texto de novo para caber no textarea (1 por linha)
+      setFotosTexto(eventoParaEditar.fotos?.join("\n") || "");
     }
   }, [eventoParaEditar]);
 
   function handleSubmit(e) {
     e.preventDefault();
 
+    // Não deixa salvar se algum campo importante estiver vazio
     if (!titulo || !data || !local || !descricao) {
       alert("Preencha todos os campos");
       return;
     }
 
+    // Cada linha do textarea vira uma foto; linhas em branco são ignoradas
+    const fotos = fotosTexto
+      .split("\n")
+      .map((url) => url.trim())
+      .filter((url) => url !== "");
+
+      const capacidade = Number(capacidadeTotal);
+
     if (eventoParaEditar) {
+      // Modo edição: manda o evento atualizado para o App
       onEdit({
         ...eventoParaEditar,
         titulo,
@@ -44,28 +63,41 @@ export default function CadastroEvento({ onAdd, onEdit }) {
         local,
         descricao,
         status,
+        capacidadeTotal: Number(capacidadeTotal),
+        mapaUrl,
+        fotos,
         editado: true
       });
     } else {
+      // Modo criação: as vagas começam iguais à capacidade total informada
       onAdd({
         titulo,
         data,
         local,
         descricao,
         status,
+        capacidadeTotal: Number(capacidadeTotal),
+        vagasRestantes: Number(capacidadeTotal),
+        mapaUrl,
+        fotos,
         editado: false
       });
     }
 
-    setOpen(true); // abre modal
+    // Tudo certo! Abre o modal de confirmação
+    setOpen(true);
   }
 
+  // Botão "Limpar Campos" — apaga tudo e começa do zero
   function limparCampos() {
     setTitulo("");
     setData("");
     setLocal("");
     setDescricao("");
     setStatus("aberto");
+    setCapacidadeTotal("");
+    setMapaUrl("");
+    setFotosTexto("");
   }
 
   return (
@@ -78,6 +110,7 @@ export default function CadastroEvento({ onAdd, onEdit }) {
 
         <form onSubmit={handleSubmit} className="form-evento">
 
+          {/* Informações básicas do evento */}
           <label>Título</label>
           <input value={titulo} onChange={(e) => setTitulo(e.target.value)} />
 
@@ -96,8 +129,37 @@ export default function CadastroEvento({ onAdd, onEdit }) {
             <option value="lotado">Lotado</option>
           </select>
 
+          {/* Campos adicionados na Sprint 1 */}
+
+          <label>Capacidade Total</label>
+          <input
+            type="number"
+            min="0"
+            value={capacidadeTotal}
+            onChange={(e) => setCapacidadeTotal(e.target.value)}
+            placeholder="Ex: 100"
+          />
+
+          <label>Mapa (link do Google Maps)</label>
+          <input
+            type="url"
+            value={mapaUrl}
+            onChange={(e) => setMapaUrl(e.target.value)}
+            placeholder="https://maps.google.com/..."
+          />
+
+          {/* O usuário cola aqui as URLs das fotos, uma em cada linha */}
+          <label>Fotos (1 URL por linha)</label>
+          <textarea
+            value={fotosTexto}
+            onChange={(e) => setFotosTexto(e.target.value)}
+            placeholder={"https://site.com/foto1.jpg\nhttps://site.com/foto2.jpg"}
+            rows={4}
+          />
+
           <div className="botoes">
 
+            {/* Desiste e volta para a lista de eventos */}
             <button
               type="button"
               className="btn-voltar"
@@ -106,10 +168,12 @@ export default function CadastroEvento({ onAdd, onEdit }) {
               Voltar
             </button>
 
+            {/* Envia o formulário */}
             <button type="submit" className="btn-salvar">
               {eventoParaEditar ? "Atualizar" : "Salvar"}
             </button>
 
+            {/* Apaga tudo nos campos */}
             <button
               type="button"
               className="btn-limpar"
@@ -117,10 +181,11 @@ export default function CadastroEvento({ onAdd, onEdit }) {
             >
               Limpar Campos
             </button>
+
           </div>
         </form>
 
-        {/* Modal de sucesso */}
+        {/* Aparece depois de salvar — ao fechar, volta pra home */}
         <Modal open={open} onClose={() => navigate("/home")}>
           <h2>
             {eventoParaEditar
