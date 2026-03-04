@@ -1,4 +1,3 @@
-import Evento from "../../componentes/backend/Evento";
 import "../frontend/Promocoes.css";
 
 

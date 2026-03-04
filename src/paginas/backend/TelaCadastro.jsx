@@ -4,9 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 function TelaCadastro() {
 
-function irParaTelaLogin() {
-    navigate("/Login");
-}
 
     const navigate = useNavigate();   // << usar o hook
 
