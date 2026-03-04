@@ -15,6 +15,10 @@ function irParaTelaLogin() {
         navigate("/home");            // << redireciona para Home
     }
 
+    function irParaTelaLogin() {
+        navigate("/Login");
+    }
+
     return (
         <main className="tela-cadastro">
             {/* Fundo */}
@@ -37,9 +41,17 @@ function irParaTelaLogin() {
                 {/* Botão com navegação */}
                 <button onClick={handleCadastrar}>Cadastrar</button>
 
-                <div onClick={irParaTelaLogin}>
-                    <a className="Login">Já tem uma conta ?</a>
-                </div>
+                {/* Link para login */}
+                <a 
+                    href="/Login" 
+                    className="Login" 
+                    onClick={(e) => {
+                        e.preventDefault(); 
+                        irParaTelaLogin();
+                    }}
+                >
+                    Já tem uma conta ?
+                </a>
             
             </div>
         </main>

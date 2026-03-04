@@ -16,6 +16,7 @@ function Promocoes() {
         className="promocao"          // Classe CSS para estilizar a imagem
         onClick={() => window.open("https://sc.senai.br/descontos", "_blank")}
         style={{ cursor: 'pointer' }}
+        alt="SENAI promocao"
       />
 
         </main>

@@ -52,8 +52,6 @@ export default function CadastroEvento({ onAdd, onEdit }) {
       .map((url) => url.trim())
       .filter((url) => url !== "");
 
-      const capacidade = Number(capacidadeTotal);
-
     if (eventoParaEditar) {
       // Modo edição: manda o evento atualizado para o App
       onEdit({

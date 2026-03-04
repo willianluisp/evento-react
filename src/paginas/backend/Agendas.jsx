@@ -1,6 +1,6 @@
 // src/paginas/Agendas.jsx
 import React from 'react';
-import { Calendario2025, CalendarioCompleto2025 } from './Calendario'; // Importe os componentes nomeados
+import { Calendario2025 } from './Calendario'; // Importe os componentes nomeados
 
 const Agendas = () => {
   return (
@@ -13,8 +13,6 @@ const Agendas = () => {
         <Calendario2025 />
       </div>
 
-      {/* Ou se quiser usar o calendário completo */}
-      {/* <CalendarioCompleto2025 /> */}
     </div>
   );
 };
