@@ -93,3 +93,37 @@
     align-items: flex-start; /* não prende no centro vertical */
     padding: 20px 0;         /* respiro em cima e embaixo */
 }
+
+/* ===================== RESPONSIVO ===================== */
+@media (max-width: 600px) {
+  .cadastrarEvento-container {
+    width: 100%;
+    padding: 16px;
+    margin: 10px auto;
+  }
+
+  .cadastrarEvento-container h2 {
+    font-size: 22px;
+  }
+
+  .form-evento label {
+    font-size: 14px;
+  }
+
+  .form-evento input {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .btn-voltar, .btn-salvar, .btn-limpar {
+    font-size: 14px;
+    padding: 10px 12px;
+    flex: 1;
+  }
+
+  .voltar-btn {
+    font-size: 24px;
+    top: 10px;
+    left: 10px;
+  }
+}

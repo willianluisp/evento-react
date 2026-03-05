@@ -61,4 +61,35 @@
     cursor: pointer;             /* Cursor "mãozinha" para indicar clicável */
   }
 
-  
+  /* ===================== RESPONSIVO ===================== */
+@media (max-width: 600px) {
+  .top-bar {
+    padding: 6px 8px;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .logo {
+    width: 36px;
+  }
+
+  .search-container {
+    flex-direction: column;
+    gap: 6px;
+    margin: 0 4px;
+    width: 100%;
+  }
+
+  .search-box {
+    margin: 0;
+    padding: 4px 8px;
+  }
+
+  .search-box input {
+    font-size: 13px;
+  }
+
+  .bell-icon {
+    font-size: 20px;
+  }
+}

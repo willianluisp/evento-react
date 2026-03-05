@@ -236,7 +236,7 @@
 .container-eventos-clicados {
   position: absolute;
   right: 15%;
-  top: 40%;
+  top: 20%;
   background: #f8f9fa;
   border: 1px solid #053f81;
   padding: 50px;
@@ -251,4 +251,27 @@
     margin-bottom: 100px;
     margin-top: 50px;
   }
+}
+
+/* ===================== RESPONSIVO ===================== */
+@media (max-width: 768px) {
+  .calendario-container {
+    max-width: 100%;
+    padding: 0 8px;
+  }
+
+  .container-eventos-clicados {
+    position: static;
+    right: auto;
+    top: auto;
+    width: auto;
+    margin: 20px 0 100px 0;
+  }
+
+  .dia { min-height: 40px; }
+  .dia.com-evento { min-height: 55px; }
+  .dia-semana { padding: 6px 2px; font-size: 11px; }
+  .numero-dia { font-size: 11px; }
+  .evento-item { font-size: 8px; }
+  .nav-button { padding: 8px 12px; font-size: 14px; }
 }

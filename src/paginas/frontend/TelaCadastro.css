@@ -85,3 +85,24 @@ h1 {
     cursor: pointer;
     font-size: 1.1rem;
 }
+
+/* ===================== RESPONSIVO ===================== */
+@media (max-width: 768px) {
+  .tela-cadastro {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card {
+    position: relative;  /* sai do absolute */
+    top: auto;
+    left: auto;
+    width: 90%;
+    max-width: 360px;
+    margin: 0 auto;
+    padding: 16px !important;
+    box-sizing: border-box;
+  }
+}

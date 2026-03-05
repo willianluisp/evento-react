@@ -33,6 +33,13 @@ function Home({
     navigate("/CadastrarEvento", { state: { eventoParaEditar: evento } });
   }
 
+    // Função para formatar data (YYYY-MM-DD → DD/MM/YYYY)
+  function formatarData(data) {
+    if (!data) return "";
+    const [ano, mes, dia] = data.split("-");
+    return `${dia}/${mes}/${ano}`;
+  }
+
   return (
     <main>
 
@@ -127,7 +134,7 @@ function Home({
               </div>
 
               <Evento
-                data={evento.data}
+                data={formatarData(evento.data)}
                 local={evento.local}
                 descricao={evento.descricao}
               />

@@ -14,3 +14,12 @@
 .p {
     margin-bottom: 15px;
 }
+
+/* ===================== RESPONSIVO ===================== */
+@media (max-width: 900px) {
+  .promocao {
+    width: 90vw;
+    height: auto;
+    border-radius: 10px;
+  }
+}

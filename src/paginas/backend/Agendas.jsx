@@ -1,21 +1,17 @@
-// src/paginas/Agendas.jsx
 import React from 'react';
-import { Calendario2025 } from './Calendario'; // Importe os componentes nomeados
+import { Calendario2025 } from './Calendario';
 
-const Agendas = () => {
+const Agendas = ({ eventos }) => {  // ← recebe eventos
   return (
     <div className="agendas-container">
       <h1>Agendas e Calendários</h1>
       
-      {/* Se quiser usar o calendário com navegação */}
       <div className="calendario-section">
         <h2>Calendário 2025</h2>
-        <Calendario2025 />
+        <Calendario2025 eventos={eventos} />  {/* ← passa eventos */}
       </div>
-
     </div>
   );
 };
 
-// Exporte como componente nomeado
 export default Agendas;

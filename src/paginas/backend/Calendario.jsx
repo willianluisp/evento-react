@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import '../frontend/Calendario.css';
 
-// Array com os eventos fixos
-const eventos = [
-  { id: 1, titulo: "Mundo Senai", data: "2025-11-05", local: "Auditório Sesi Senai" },
-  { id: 2, titulo: "Agro Chaaama", data: "2025-12-06", local: "Parque Efapi" },
-  { id: 3, titulo: "Palestra", data: "2025-12-22", local: "Unoesc" }
-];
+  // Função para formatar data (YYYY-MM-DD → DD/MM/YYYY)
+  function formatarData(data) {
+    if (!data) return "";
+    const [ano, mes, dia] = data.split("-");
+    return `${dia}/${mes}/${ano}`;
+  }
 
 /**
  * Função auxiliar para gerar os dias de um mês específico
  */
-const gerarDiasDoMes = (ano, mes) => {
+const gerarDiasDoMes = (ano, mes, eventos) => {
   const primeiroDia = new Date(ano, mes, 1);
   const ultimoDia = new Date(ano, mes + 1, 0);
   const diasNoMes = ultimoDia.getDate();
@@ -39,7 +39,7 @@ const gerarDiasDoMes = (ano, mes) => {
   return dias;
 };
 
-export const Calendario2025 = () => {
+export const Calendario2025 = ({eventos = []}) => {
 
   const [mesAtual, setMesAtual] = useState(0);
   const [selectedEventos, setSelectedEventos] = useState([]);   /* ADICIONADO */
@@ -59,13 +59,13 @@ export const Calendario2025 = () => {
     setMesAtual(prev => (prev === 11 ? 0 : prev + 1));
   };
 
-  const dias = gerarDiasDoMes(2025, mesAtual);
+  const dias = gerarDiasDoMes(2026, mesAtual, eventos);
 
   return (
     <div className="calendario-container">
       <div className="calendario-header">
         <button onClick={mesAnterior} className="nav-button">&lt;</button>
-        <h2>{meses[mesAtual]} 2025</h2>
+        <h2>{meses[mesAtual]} 2026</h2>
         <button onClick={proximoMes} className="nav-button">&gt;</button>
       </div>
 
@@ -117,7 +117,22 @@ export const Calendario2025 = () => {
             <div key={ev.id} className="card-evento-clicado">
               <h4>{ev.titulo}</h4>
               <p><strong>Local:</strong> {ev.local}</p>
-              <p><strong>Data:</strong> {ev.data}</p>
+              <p><strong>Data:</strong> {formatarData(ev.data)}</p>
+
+                  {/* mostrar foto adicionada*/}
+              {ev.fotos && ev.fotos.length > 0 && (
+              <img
+              src={ev.fotos[0]}
+              alt={ev.titulo}
+              style={{
+              width: "100%",
+              height: "150px",
+              objectFit: "cover",
+              borderRadius: "8px",
+              marginTop: "8px"
+              }}
+              />
+          )}
             </div>
           ))
         )}

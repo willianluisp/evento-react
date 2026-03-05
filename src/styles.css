@@ -232,3 +232,36 @@ body {
     transform: translateY(0);
   }
 }
+
+/* ===================== RESPONSIVO ===================== */
+@media (max-width: 600px) {
+  .quadrado-evento {
+    width: calc(100% - 32px);
+    max-width: 340px;
+  }
+
+  .eventos-container {
+    gap: 16px;
+    padding: 0 16px;
+    margin-bottom: 100px;
+  }
+
+  #btnRemover2 {
+    width: 90%;
+    margin: 15px auto;
+    display: block;
+  }
+
+  .detalhe-card {
+    padding: 20px 16px;
+  }
+
+  .detalhe-titulo {
+    font-size: 22px;
+  }
+
+  .box {
+    margin: 6px 16px;
+    font-size: 14px;
+  }
+}

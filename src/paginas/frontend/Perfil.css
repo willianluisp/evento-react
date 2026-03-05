@@ -179,3 +179,35 @@ Garante que o avatar fique estático, enquanto os cards ainda animam normalmente
     }
   }
   
+  /* ===================== RESPONSIVO ===================== */
+@media (max-width: 768px) {
+  body { overflow: auto; }
+
+  .perfil-main { padding: 16px 12px 80px 12px; }
+
+  .perfil-avatar { margin-top: 10px; }
+
+  .material-icons.avatar-icon { font-size: 120px; }
+
+  .perfil-title { font-size: 22px; }
+
+  .perfil-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 20px;
+  }
+
+  .perfil-card { padding: 18px 8px; font-size: 13px; }
+  .perfil-card .material-icons { font-size: 28px; }
+
+  .sairConta {
+    position: relative;
+    left: auto;
+    top: auto;
+    margin-top: 10px;
+    font-size: 13px;
+    display: block;
+    text-align: right;
+    padding-right: 8px;
+  }
+}

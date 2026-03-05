@@ -59,3 +59,18 @@
 #btnLogin:hover{
     background: #2a4e7c;
 }
+
+/* ===================== RESPONSIVO ===================== */
+@media (max-width: 600px) {
+  .TelaLogin {
+    width: 90%;
+    padding: 20px 16px;
+    /* remove o posicionamento absoluto que tinha top/transform */
+    top: auto;
+    transform: none;
+  }
+
+  .TelaLogin h1 {
+    font-size: 22px;
+  }
+}
