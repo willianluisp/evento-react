@@ -265,3 +265,9 @@ body {
     font-size: 14px;
   }
 }
+
+/* Animação de digitar */
+@keyframes piscar {
+  0%, 100% { border-color: #053f81; }
+  50%       { border-color: transparent; }
+}

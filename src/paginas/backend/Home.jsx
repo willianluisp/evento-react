@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Evento from "../../componentes/backend/Evento";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -12,7 +12,28 @@ function Home({
   filtroLocal, 
   onEditarEvento 
 }) {
+
+  const textoCompleto  = "MAWR EventHub !!";
+  const [textoDigitado, setTextoDigitado] = useState("");
+
+useEffect(() => {
+  let i = 0;
   
+  const iniciarAnimacao = () => {
+    setTextoDigitado("");
+    i = 0;
+    const intervalo = setInterval(() => {
+      setTextoDigitado(textoCompleto.slice(0, i + 1));
+      i++;
+      if (i === textoCompleto.length) {
+        clearInterval(intervalo);
+        setTimeout(iniciarAnimacao, 1500); // espera 1.5s e repete
+      }
+    }, 100);
+  };
+
+  iniciarAnimacao();
+}, []);
   const navigate = useNavigate(); 
 
   const eventosFiltrados = eventos.filter((evento) => {
@@ -43,8 +64,13 @@ function Home({
   return (
     <main>
 
-      <h1 style={{ color: '#053f81' }}>
-        Bem vindo ao <b>MAWR EventHub</b>
+        {/* PARA ANIMAÇÃO DE DIGITAR */}
+        <h1 style={{ color: '#053f81' }}>
+        Bem vindo ao <b>{textoDigitado}<span style={{
+        borderRight: "2px solid #053f81",
+        marginLeft: "2px",
+        animation: "piscar 0.7s step-end infinite"
+        }}></span></b>
       </h1>
 
       <p style={{ color: '#053f81' }}>
