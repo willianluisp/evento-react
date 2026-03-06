@@ -7,7 +7,7 @@ const Agendas = ({ eventos }) => {  // ← recebe eventos
       <h1>Agendas e Calendários</h1>
       
       <div className="calendario-section">
-        <h2>Calendário 2025</h2>
+        <h2>Calendário 2026</h2>
         <Calendario2025 eventos={eventos} />  {/* ← passa eventos */}
       </div>
     </div>
