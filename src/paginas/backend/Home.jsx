@@ -13,7 +13,7 @@ function Home({
   onEditarEvento 
 }) {
 
-  const textoCompleto  = "MAWR EventHub !!";
+  const textoCompleto  = "MAWRL EventHub !!";
   const [textoDigitado, setTextoDigitado] = useState("");
 
 useEffect(() => {

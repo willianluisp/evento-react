@@ -9,7 +9,7 @@ export default function TopBar({ busca, setBusca, filtroLocal, setFiltroLocal })
       
       {/* Imagem do logo SENAI à esquerda */}
       <img 
-        src="/images/logo-senai.png"     // Caminho para a imagem do logo (pasta public)
+        src="/Logo-senai.png"     // Caminho para a imagem do logo (pasta public)
         className="logo"
         alt="logo do SENAI"          // Classe CSS para estilizar a imagem
       />

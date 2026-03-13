@@ -58,7 +58,7 @@ function Login() {
 
             <div className="TelaLogin">
                 <div className="voltar-btn" onClick={() => navigate(-1)}>
-                    <span className="material-icons" style={{ color: "#053f81", fontSize: '32px'}}>
+                    <span className="material-icons" style={{ color: "white", fontSize: '32px'}}>
                         arrow_back
                     </span>
                 </div>

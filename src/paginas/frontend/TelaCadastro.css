@@ -22,7 +22,7 @@
     position: absolute;  /* posicionamento livre */
     z-index: 2;
 
-    top: 310px;      /* agora você pode subir ou descer */
+    top: 290px;      /* agora você pode subir ou descer */
     left: 775px;     /* ajusta horizontalmente para o monitor */
     transform: none; /* sem nenhum translate que bloqueie vertical */
     margin-top: -7px;
@@ -34,7 +34,7 @@
 
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 5px;
 }
 
 
