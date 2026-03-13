@@ -1,14 +1,26 @@
 import "../frontend/Perfil.css";
 import React from "react";
-import { useNavigate } from "react-router-dom"; // IMPORTAR
+import { useNavigate } from "react-router-dom";
 
 function Perfil() {
-  const navigate = useNavigate(); // criar a função de navegação
 
+  const navigate = useNavigate();
+
+  // Aqui pegamos o nome do usuário que foi salvo no login
+  const usuario = localStorage.getItem("usuario");
+
+  // função para ir para tela de cadastrar evento
   function irParaCadastrarEvento() {
-    navigate("/CadastrarEvento"); // navega para a rota /CadastrarEvento
+    navigate("/CadastrarEvento");
   }
+
+  // função para sair da conta
   function irParaTelaCadastro() {
+
+    // removendo usuário salvo
+    localStorage.removeItem("usuario");
+
+    // voltando para tela inicial
     navigate("/");
   }
 
@@ -16,33 +28,50 @@ function Perfil() {
     <main className="perfil-main">
       <div className="perfil-container">
 
+        {/* BOTÃO SAIR DA CONTA */}
         <div className="sairConta" onClick={irParaTelaCadastro}>
 
         <span className="material-icons add-exit_to_app">
         <b>exit_to_app</b>
         </span>
-        <p className="Sair-Conta" style={{ fontSize: '15px', marginTop: '0px'}}><b>Sair da Conta</b></p>
+
+        <p className="Sair-Conta" style={{ fontSize: '15px', marginTop: '0px'}}>
+          <b>Sair da Conta</b>
+        </p>
 
         </div>
-        
-        {/* Avatar */}
+
+        {/* AVATAR DO USUÁRIO */}
         <div className="perfil-avatar">
-          <span className="material-icons avatar-icon">account_circle</span>
+
+          <span className="material-icons avatar-icon">
+            account_circle
+          </span>
 
           <span className="add-photo" style={{color:'#3b6ca8'}}>
-            <span className="material-icons add-photo-icon">photo_camera</span>
+
+            <span className="material-icons add-photo-icon">
+              photo_camera
+            </span>
+
             <b>Adicionar foto</b>
+
           </span>
-          
 
         </div>
 
-        <h2 className="perfil-title" style={{color:'#3b6ca8'}}>Perfil</h2>
+        {/* AQUI MOSTRAMOS O NOME DO USUÁRIO */}
+        <h2 className="perfil-title" style={{color:'#3b6ca8'}}>
 
-        {/* GRID 2x3 */}
+          {/* Se tiver usuário mostra o nome, senão mostra Perfil */}
+          {usuario ? `Olá, ${usuario}` : "Perfil"}
+
+        </h2>
+
+
+        {/* GRID COM OS BOTÕES */}
         <div className="perfil-grid">
 
-          {/* CARTÃO CADASTRAR EVENTO - ADICIONAR ONCLICK */}
           <div
             className="perfil-card"
             onClick={irParaCadastrarEvento}
@@ -51,7 +80,6 @@ function Perfil() {
             <p>Cadastrar Evento</p>
           </div>
 
-          {/* Os demais cartões sem alteração */}
           <div className="perfil-card">
             <span className="material-icons card-icon">lock_person</span>
             <p>Gerenciar Senha</p>

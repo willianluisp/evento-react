@@ -19,13 +19,12 @@ function Login() {
         setForm({ ...form, [e.target.name]: e.target.value });
     }
 
-    // fora do handleChange agora
     async function handleLogin() {
         if (!form.email || !form.senha) {
             setErro("Preencha todos os campos.");
             return;
         }
-
+    
         try {
             const resposta = await fetch("http://localhost:3001/login", {
                 method: "POST",
@@ -35,11 +34,17 @@ function Login() {
                     senha: form.senha
                 })
             });
-
+    
             const dados = await resposta.json();
-
+    
+            console.log(dados); // 👈 importante para ver no console
+    
             if (dados.sucesso) {
-                navigate("/home");
+                // SALVA O NOME DO USUÁRIO NO NAVEGADOR
+                localStorage.setItem("usuario", dados.usuario);
+    
+                // vai para a tela home
+                navigate("/Perfil");
             } else {
                 setErro(dados.mensagem);
             }
@@ -47,7 +52,7 @@ function Login() {
             setErro("Erro ao conectar com o servidor.");
         }
     }
-
+    
     return (
         <main className="tela-login">
             <img 
