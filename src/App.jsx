@@ -1,6 +1,5 @@
 // Importação dos estilos globais
 import "./styles.css";
-import React, { useState } from "react";
 
 // Importações do React Router
 import {
@@ -10,6 +9,7 @@ import {
   Link,
   useLocation,
 } from "react-router-dom";
+import { useState } from "react";
 
 // Importação das páginas
 import Home from "./paginas/backend/Home";
@@ -29,12 +29,15 @@ import TopBar from "./componentes/backend/TopBar";
 // Ícones do Material Icons
 import "material-icons/iconfont/material-icons.css";
 
+// ✅ Conecta com a API do backend
+import { useEventosService } from "./service/eventosService";
+
 
 // ==================================================================
 // ====================== COMPONENTE LAYOUT ==========================
 // ==================================================================
 
-function Layout({ eventos, adicionarEvento, editarEvento, onRemover, onRemoverTodos }) {
+function Layout({ eventos, adicionarEvento, editarEvento, onRemover, onRemoverTodos, carregando, erro }) {
   const location = useLocation();
 
   const [busca, setBusca] = useState("");
@@ -43,7 +46,6 @@ function Layout({ eventos, adicionarEvento, editarEvento, onRemover, onRemoverTo
   const isLoginPage = location.pathname === "/";
   const showTopBar = location.pathname === "/home";
   const showSobreButton = location.pathname === "/perfil";
-
 
   return (
     <div className="app">
@@ -72,16 +74,24 @@ function Layout({ eventos, adicionarEvento, editarEvento, onRemover, onRemoverTo
         <Route
           path="/home"
           element={
-            <Home
-              total={eventos.length}
-              primeiroEvento={eventos[eventos.length - 1]?.titulo}
-              eventos={eventos}
-              onRemover={onRemover}
-              onRemoverTodos={onRemoverTodos}
-              busca={busca}
-              filtroLocal={filtroLocal}
-              onEditarEvento={editarEvento}
-            />
+            carregando ? (
+              <p style={{ textAlign: "center", marginTop: "2rem" }}>Carregando eventos...</p>
+            ) : erro ? (
+              <p style={{ textAlign: "center", color: "red", marginTop: "2rem" }}>
+                Erro ao carregar eventos: {erro}
+              </p>
+            ) : (
+              <Home
+                total={eventos.length}
+                primeiroEvento={eventos[eventos.length - 1]?.titulo}
+                eventos={eventos}
+                onRemover={onRemover}
+                onRemoverTodos={onRemoverTodos}
+                busca={busca}
+                filtroLocal={filtroLocal}
+                onEditarEvento={editarEvento}
+              />
+            )
           }
         />
 
@@ -101,15 +111,13 @@ function Layout({ eventos, adicionarEvento, editarEvento, onRemover, onRemoverTo
         <Route path="/Login" element={<Login />} />
       </Routes>
 
-{/* ================== BOTTOM NAV ==================== */}
-{!isLoginPage && 
- location.pathname !== "/CadastrarEvento" && 
- location.pathname !== "/Login" && 
- !location.pathname.startsWith("/evento/") && 
-  (
-  <BottomNav />
-)}
-
+      {/* ================== BOTTOM NAV ==================== */}
+      {!isLoginPage &&
+        location.pathname !== "/CadastrarEvento" &&
+        location.pathname !== "/Login" &&
+        !location.pathname.startsWith("/evento/") && (
+          <BottomNav />
+        )}
     </div>
   );
 }
@@ -120,69 +128,23 @@ function Layout({ eventos, adicionarEvento, editarEvento, onRemover, onRemoverTo
 // ==================================================================
 
 export default function App() {
-  const [eventos, setEventos] = useState([
-    {
-      id: 1,
-      titulo: "Agro Chaaama",
-      data: "2026-12-06",
-      local: "Parque Efapi",
-      descricao: "Evento Agro Chaaama no Parque Efapi, com palestras e workshops sobre agricultura sustentável.",
-      editado: false,
-      status: "aberto",
-      capacidadeTotal: Number(1250),
-      fotos: ["https://scontent.fcfc1-1.fna.fbcdn.net/v/t39.30808-6/429941565_409829841545644_7099876804759256464_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=ZePlWOf48l4Q7kNvwFOXdyE&_nc_oc=Adl4aMPE1wEUHbDZ6ySs30MZTI7binPTH-JPhZPcqBfytJxYWhUhGo3i3kEYBffz8NU&_nc_zt=23&_nc_ht=scontent.fcfc1-1.fna&_nc_gid=j91i3I21C9IJUnVNRNs5Zg&_nc_ss=8&oh=00_AfzLjGjRmmu5ZxiQJHrM3E4phR6DEp0JsWrRdq-Du6Jr5A&oe=69B7A751"]
-    },
-    {
-      id: 2,
-      titulo: "Mundo Senai",
-      data: "2026-11-05",
-      local: "Escola Sesi Senai",
-      descricao: "Evento Mundo Senai na Escola Sesi Senai, com exposições de projetos e atividades interativas para estudantes.",
-      editado: false,
-      status: "aberto",
-      fotos: ["https://tse2.mm.bing.net/th/id/OIP.KS0vnz0IbajNkSUjSeX10gHaNK?rs=1&pid=ImgDetMain&o=7&rm=3"]
-    },
-    {
-      id: 3,
-      titulo: "Review da Sprint",
-      data: "2026-02-13",
-      local: "Auditório",
-      descricao: "Apresentação dos resultados da sprint",
-      editado: false,
-      status: "lotado",
-      fotos: ["https://th.bing.com/th/id/R.c214d38613fd5d05c340a72d67674ba8?rik=UupPmyyXnfNqeg&pid=ImgRaw&r=0"]
-    },
-  ]);
-
-  function adicionarEvento(novo) {
-    const eventoComId = { id: Date.now(), ...novo, editado: false };
-    setEventos((lista) => [eventoComId, ...lista]);
-  }
-
-  function editarEvento(eventoEditado) {
-    setEventos((lista) =>
-      lista.map((e) =>
-        e.id === eventoEditado.id
-          ? { ...eventoEditado, editado: true }
-          : e
-      )
-    );
-  }
-
-  function removerEvento(id) {
-    setEventos((lista) => lista.filter((e) => e.id !== id));
-  }
-
-  function removerTodos() {
-    if (window.confirm("Tem certeza que deseja remover todos os eventos?")) {
-      setEventos([])
-    }
-  }
+  // ✅ Substituímos o useState manual pelo hook que faz as chamadas à API
+  const {
+    eventos,
+    carregando,
+    erro,
+    adicionarEvento,
+    editarEvento,
+    removerEvento,
+    removerTodos,
+  } = useEventosService();
 
   return (
     <Router>
       <Layout
         eventos={eventos}
+        carregando={carregando}
+        erro={erro}
         adicionarEvento={adicionarEvento}
         editarEvento={editarEvento}
         onRemover={removerEvento}

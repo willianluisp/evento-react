@@ -54,12 +54,15 @@ useEffect(() => {
     navigate("/CadastrarEvento", { state: { eventoParaEditar: evento } });
   }
 
-    // Função para formatar data (YYYY-MM-DD → DD/MM/YYYY)
-  function formatarData(data) {
-    if (!data) return "";
-    const [ano, mes, dia] = data.split("-");
-    return `${dia}/${mes}/${ano}`;
-  }
+// Função para formatar data (YYYY-MM-DD ou ISO → DD/MM/YYYY)
+function formatarData(data) {
+  if (!data) return "";
+  const d = new Date(data);
+  const dia = String(d.getUTCDate()).padStart(2, "0");
+  const mes = String(d.getUTCMonth() + 1).padStart(2, "0");
+  const ano = d.getUTCFullYear();
+  return `${dia}/${mes}/${ano}`;
+}
 
   return (
     <main>
