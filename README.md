@@ -29,26 +29,45 @@ Sistema de gerenciamento de eventos com funcionalidades de cadastro, calendário
 ## 📁 Estrutura do Projeto
 
 ```
-src/
-├── componentes/
-│   ├── BottomNav
-│   ├── Evento
-│   ├── Modal
-│   └── TopBar
-└── paginas/
-    ├── Agendas
-    ├── CadastrarEvento
-    ├── Calendario
-    ├── Home
-    ├── Login
-    ├── Perfil
-    ├── Promocoes
-    ├── Sobre
-    └── TelaCadastro
+📦src
+ ┣ 📂componentes
+ ┃ ┣ 📂backend
+ ┃ ┃ ┣ 📜BottomNav.jsx
+ ┃ ┃ ┣ 📜Evento.jsx
+ ┃ ┃ ┣ 📜Modal.jsx
+ ┃ ┃ ┗ 📜TopBar.jsx
+ ┃ ┗ 📂frontend
+ ┃ ┃ ┣ 📜BottomNav.css
+ ┃ ┃ ┣ 📜Modal.css
+ ┃ ┃ ┗ 📜TopBar.css
+ ┣ 📂database
+ ┃ ┗ 📜schema.sql
+ ┣ 📂paginas
+ ┃ ┣ 📂backend
+ ┃ ┃ ┣ 📜Agendas.jsx
+ ┃ ┃ ┣ 📜CadastrarEvento.jsx
+ ┃ ┃ ┣ 📜Calendario.jsx
+ ┃ ┃ ┣ 📜EventoDetalhe.jsx
+ ┃ ┃ ┣ 📜Home.jsx
+ ┃ ┃ ┣ 📜Login.jsx
+ ┃ ┃ ┣ 📜Perfil.jsx
+ ┃ ┃ ┣ 📜Promocoes.jsx
+ ┃ ┃ ┣ 📜Sobre.jsx
+ ┃ ┃ ┗ 📜TelaCadastro.jsx
+ ┃ ┗ 📂frontend
+ ┃ ┃ ┣ 📜cadastrarEvento.css
+ ┃ ┃ ┣ 📜Calendario.css
+ ┃ ┃ ┣ 📜Login.css
+ ┃ ┃ ┣ 📜Perfil.css
+ ┃ ┃ ┣ 📜Promocoes.css
+ ┃ ┃ ┗ 📜TelaCadastro.css
+ ┣ 📜App.jsx
+ ┣ 📜index.js
+ ┗ 📜styles.css
 ```
 - Com pastas separados..
 
-## 👨‍🎓 Autor
+## 👨‍🎓 Autores
 
 - Desenvolvido como trabalho de curso — SENAI
 - Grupo MAWR
