@@ -48,6 +48,9 @@ Sistema de gerenciamento de eventos com funcionalidades de cadastro, calendário
  ┃ ┃ ┣ 📜CadastrarEvento.jsx
  ┃ ┃ ┣ 📜Calendario.jsx
  ┃ ┃ ┣ 📜EventoDetalhe.jsx
+ ┃ ┃ ┣ 📜GerenciarEmail.jsx
+ ┃ ┃ ┣ 📜GerenciarNome.jsx
+ ┃ ┃ ┣ 📜GerenciarSenha.jsx
  ┃ ┃ ┣ 📜Home.jsx
  ┃ ┃ ┣ 📜Login.jsx
  ┃ ┃ ┣ 📜Perfil.jsx
@@ -57,10 +60,19 @@ Sistema de gerenciamento de eventos com funcionalidades de cadastro, calendário
  ┃ ┗ 📂frontend
  ┃ ┃ ┣ 📜cadastrarEvento.css
  ┃ ┃ ┣ 📜Calendario.css
+ ┃ ┃ ┣ 📜GerenciarEmail.css
+ ┃ ┃ ┣ 📜GerenciarNome.css
+ ┃ ┃ ┣ 📜GerenciarSenha.css
  ┃ ┃ ┣ 📜Login.css
  ┃ ┃ ┣ 📜Perfil.css
  ┃ ┃ ┣ 📜Promocoes.css
  ┃ ┃ ┗ 📜TelaCadastro.css
+ ┣ 📂routes
+ ┃ ┗ 📜eventos.routes.js
+ ┣ 📂routes.js
+ ┃ ┗ 📜eventos.routes.js
+ ┣ 📂service
+ ┃ ┗ 📜eventosService.js
  ┣ 📜App.jsx
  ┣ 📜index.js
  ┗ 📜styles.css
