@@ -1,0 +1,192 @@
+/* ==========================
+   GERENCIAR EMAIL - ESTILIZAÇÃO
+   ========================== */
+
+body {
+  background-color: #f0f4f8;
+  overflow: hidden;
+}
+
+.gerenciaremail-main {
+  min-height: 88vh;
+  padding: 20px 20px;
+  background: #f0f4f8;
+}
+
+.gerenciaremail-container {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ==========================
+   BOTÃO VOLTAR
+   ========================== */
+.gerenciaremail-voltar {
+  margin-top: 150px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #3b6ca8;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  width: fit-content;
+  transition: opacity 0.2s;
+}
+
+.gerenciaremail-voltar:hover {
+  opacity: 0.7;
+}
+
+/* ==========================
+   ÍCONE PRINCIPAL
+   ========================== */
+.gerenciaremail-icone {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.gerenciaremail-icone .material-icons {
+  font-size: 80px;
+  color: #3b6ca8;
+}
+
+/* ==========================
+   TÍTULO
+   ========================== */
+.gerenciaremail-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #3b6ca8;
+  margin-bottom: 30px;
+}
+
+/* ==========================
+   CARDS
+   ========================== */
+.gerenciaremail-card {
+  background: #3b6ca8;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  text-align: left;
+  color: white;
+}
+
+.gerenciaremail-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.8;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+/* ==========================
+   INPUT
+   ========================== */
+.gerenciaremail-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 6px 0;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.gerenciaremail-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: normal;
+}
+
+.gerenciaremail-input:focus {
+  border-bottom-color: white;
+}
+
+/* ==========================
+   MENSAGENS DE FEEDBACK
+   ========================== */
+.gerenciaremail-sucesso {
+  color: #2e7d32;
+  background: #e8f5e9;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.gerenciaremail-erro {
+  color: #c62828;
+  background: #ffebee;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+/* ==========================
+   BOTÃO SALVAR
+   ========================== */
+.gerenciaremail-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  background: #3b6ca8;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 8px;
+}
+
+.gerenciaremail-btn:hover:not(:disabled) {
+  background: #053f81;
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(5, 63, 129, 0.3);
+}
+
+.gerenciaremail-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+/* ==========================
+   RESPONSIVO
+   ========================== */
+@media (max-width: 768px) {
+  body { overflow: auto; }
+
+  .gerenciaremail-main {
+    padding: 16px 12px 80px 12px;
+  }
+
+  .gerenciaremail-title {
+    font-size: 20px;
+  }
+
+  .gerenciaremail-icone .material-icons {
+    font-size: 60px;
+  }
+}

@@ -21,6 +21,9 @@ import CadastrarEvento from "./paginas/backend/CadastrarEvento";
 import TelaCadastro from "./paginas/backend/TelaCadastro";
 import Login from "./paginas/backend/Login";
 import EventoDetalhe from "./paginas/backend/EventoDetalhe";
+import MudarNome from "./paginas/backend/GerenciarNome"; 
+import GerenciarEmail from "./paginas/backend/GerenciarEmail"; 
+import GerenciarSenha from "./paginas/backend/GerenciarSenha"; 
 
 // Componentes fixos
 import BottomNav from "./componentes/backend/BottomNav";
@@ -46,6 +49,16 @@ function Layout({ eventos, adicionarEvento, editarEvento, onRemover, onRemoverTo
   const isLoginPage = location.pathname === "/";
   const showTopBar = location.pathname === "/home";
   const showSobreButton = location.pathname === "/perfil";
+
+  // ✅ Páginas que escondem o BottomNav
+  const hideBottomNav =
+    isLoginPage ||
+    location.pathname === "/CadastrarEvento" ||
+    location.pathname === "/Login" ||
+    location.pathname === "/mudar-nome" || // ✅ NOVO
+    location.pathname === "/gerenciar-email" || // ✅ NOVO
+    location.pathname === "/gerenciar-senha" || // ✅ NOVO
+    location.pathname.startsWith("/evento/");
 
   return (
     <div className="app">
@@ -100,6 +113,9 @@ function Layout({ eventos, adicionarEvento, editarEvento, onRemover, onRemoverTo
         <Route path="/agendas" element={<Agendas eventos={eventos} />} />
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/evento/:id" element={<EventoDetalhe eventos={eventos} />} />
+        <Route path="/gerenciar-nome" element={<MudarNome />} /> 
+        <Route path="/gerenciar-email" element={<GerenciarEmail />} /> 
+        <Route path="/gerenciar-senha" element={<GerenciarSenha />} /> 
 
         <Route
           path="/CadastrarEvento"
@@ -112,12 +128,7 @@ function Layout({ eventos, adicionarEvento, editarEvento, onRemover, onRemoverTo
       </Routes>
 
       {/* ================== BOTTOM NAV ==================== */}
-      {!isLoginPage &&
-        location.pathname !== "/CadastrarEvento" &&
-        location.pathname !== "/Login" &&
-        !location.pathname.startsWith("/evento/") && (
-          <BottomNav />
-        )}
+      {!hideBottomNav && <BottomNav />}
     </div>
   );
 }
@@ -128,7 +139,6 @@ function Layout({ eventos, adicionarEvento, editarEvento, onRemover, onRemoverTo
 // ==================================================================
 
 export default function App() {
-  // ✅ Substituímos o useState manual pelo hook que faz as chamadas à API
   const {
     eventos,
     carregando,

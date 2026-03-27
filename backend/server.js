@@ -67,7 +67,8 @@ app.post("/login", async (req, res) => {
             res.json({
                 sucesso: true,
                 mensagem: "Login realizado com sucesso!",
-                usuario: usuario.usuario
+                usuario: usuario.usuario,
+                id: usuario.id  // ✅ ADICIONADO: envia o id para o frontend salvar
             });
         } else {
             res.status(401).json({ sucesso: false, mensagem: "Email ou senha incorretos." });
@@ -76,6 +77,113 @@ app.post("/login", async (req, res) => {
     } catch (erro) {
         console.log("Erro no login:", erro.message);
         res.status(500).json({ sucesso: false, mensagem: "Erro no servidor." });
+    }
+});
+
+
+// ============================
+// ROTA DE MUDAR NOME DE USUÁRIO  ✅ NOVO
+// ============================
+app.put("/usuario/:id/nome", async (req, res) => {
+    const { id } = req.params;
+    const { nome } = req.body;
+
+    if (!nome || nome.trim() === "") {
+        return res.status(400).json({ erro: "Nome inválido." });
+    }
+
+    try {
+        const resultado = await pool.query(
+            "UPDATE usuarios SET usuario = $1 WHERE id = $2 RETURNING id, usuario",
+            [nome.trim(), id]
+        );
+
+        if (resultado.rowCount === 0) {
+            return res.status(404).json({ erro: "Usuário não encontrado." });
+        }
+
+        res.json({ mensagem: "Nome atualizado com sucesso!", usuario: resultado.rows[0] });
+
+    } catch (erro) {
+        console.log("Erro ao atualizar nome:", erro.message);
+        res.status(500).json({ erro: "Erro interno no servidor." });
+    }
+});
+
+
+// ============================
+// ROTA DE MUDAR EMAIL  ✅ NOVO
+// ============================
+app.put("/usuario/:id/email", async (req, res) => {
+    const { id } = req.params;
+    const { email } = req.body;
+
+    if (!email || email.trim() === "") {
+        return res.status(400).json({ erro: "E-mail inválido." });
+    }
+
+    try {
+        // Verifica se o email já está em uso por outro usuário
+        const emailExiste = await pool.query(
+            "SELECT id FROM usuarios WHERE email = $1 AND id != $2",
+            [email.trim(), id]
+        );
+
+        if (emailExiste.rows.length > 0) {
+            return res.status(400).json({ erro: "Este e-mail já está em uso." });
+        }
+
+        const resultado = await pool.query(
+            "UPDATE usuarios SET email = $1 WHERE id = $2 RETURNING id, email",
+            [email.trim(), id]
+        );
+
+        if (resultado.rowCount === 0) {
+            return res.status(404).json({ erro: "Usuário não encontrado." });
+        }
+
+        res.json({ mensagem: "E-mail atualizado com sucesso!", usuario: resultado.rows[0] });
+
+    } catch (erro) {
+        console.log("Erro ao atualizar email:", erro.message);
+        res.status(500).json({ erro: "Erro interno no servidor." });
+    }
+});
+
+
+// ============================
+// ROTA DE MUDAR SENHA  ✅ NOVO
+// ============================
+app.put("/usuario/:id/senha", async (req, res) => {
+    const { id } = req.params;
+    const { senhaAtual, novaSenha } = req.body;
+
+    if (!senhaAtual || !novaSenha) {
+        return res.status(400).json({ erro: "Preencha todos os campos." });
+    }
+
+    try {
+        // Verifica se a senha atual está correta
+        const resultado = await pool.query(
+            "SELECT id FROM usuarios WHERE id = $1 AND senha = $2",
+            [id, senhaAtual]
+        );
+
+        if (resultado.rows.length === 0) {
+            return res.status(401).json({ erro: "Senha atual incorreta." });
+        }
+
+        // Atualiza para a nova senha
+        await pool.query(
+            "UPDATE usuarios SET senha = $1 WHERE id = $2",
+            [novaSenha, id]
+        );
+
+        res.json({ mensagem: "Senha atualizada com sucesso!" });
+
+    } catch (erro) {
+        console.log("Erro ao atualizar senha:", erro.message);
+        res.status(500).json({ erro: "Erro interno no servidor." });
     }
 });
 
@@ -91,7 +199,6 @@ app.get("/eventos", async (req, res) => {
             "SELECT * FROM eventos ORDER BY data ASC"
         );
 
-        // Para cada evento, busca as fotos relacionadas
         const eventosComFotos = await Promise.all(
             eventos.map(async (evento) => {
                 const { rows: fotos } = await pool.query(
@@ -130,7 +237,6 @@ app.post("/eventos", async (req, res) => {
         return res.status(400).json({ sucesso: false, mensagem: "Preencha todos os campos obrigatórios." });
     }
 
-    // Transaction garante que evento e fotos são salvos juntos
     const client = await pool.connect();
     try {
         await client.query("BEGIN");
@@ -144,7 +250,6 @@ app.post("/eventos", async (req, res) => {
 
         const novoEvento = rows[0];
 
-        // Insere as fotos, se houver
         if (fotos && fotos.length > 0) {
             for (const url of fotos) {
                 await client.query(
@@ -205,7 +310,6 @@ app.put("/eventos/:id", async (req, res) => {
             return res.status(404).json({ sucesso: false, mensagem: "Evento não encontrado." });
         }
 
-        // Remove as fotos antigas e insere as novas
         await client.query("DELETE FROM foto WHERE eventos_id = $1", [id]);
 
         if (fotos && fotos.length > 0) {
@@ -250,7 +354,6 @@ app.put("/eventos/:id", async (req, res) => {
 app.delete("/eventos/:id", async (req, res) => {
     const { id } = req.params;
     try {
-        // ON DELETE CASCADE no banco apaga as fotos automaticamente
         const { rowCount } = await pool.query(
             "DELETE FROM eventos WHERE id_eventos = $1",
             [id]

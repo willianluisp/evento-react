@@ -1,0 +1,203 @@
+/* ==========================
+   MUDAR NOME - ESTILIZAÇÃO
+   ========================== */
+
+body {
+  background-color: #f0f4f8;
+  overflow: hidden;
+}
+
+.mudarnome-main {
+  min-height: 88vh;
+  padding: 20px 20px;
+  background: #f0f4f8;
+}
+
+.mudarnome-container {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ==========================
+   BOTÃO VOLTAR
+   ========================== */
+.mudarnome-voltar {
+  margin-top: 150px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #3b6ca8;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  width: fit-content;
+  transition: opacity 0.2s;
+}
+.material-icons.arrow-back {
+  color: white;
+  font-size: 18px;
+}
+
+.mudarnome-voltar:hover {
+  opacity: 0.7;
+}
+
+/* ==========================
+   ÍCONE PRINCIPAL
+   ========================== */
+.mudarnome-icone {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.mudarnome-icone .material-icons {
+  font-size: 80px;
+  color: #3b6ca8;
+}
+
+/* ==========================
+   TÍTULO
+   ========================== */
+.mudarnome-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #3b6ca8;
+  margin-bottom: 30px;
+}
+
+/* ==========================
+   CARDS DE INFORMAÇÃO
+   ========================== */
+.mudarnome-card {
+  background: #3b6ca8;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  text-align: left;
+  color: white;
+}
+
+.mudarnome-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.8;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.mudarnome-nome-atual {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* ==========================
+   INPUT
+   ========================== */
+.mudarnome-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 6px 0;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.mudarnome-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: normal;
+}
+
+.mudarnome-input:focus {
+  border-bottom-color: white;
+}
+
+/* ==========================
+   MENSAGENS DE FEEDBACK
+   ========================== */
+.mudarnome-sucesso {
+  color: #2e7d32;
+  background: #e8f5e9;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.mudarnome-erro {
+  color: #c62828;
+  background: #ffebee;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+/* ==========================
+   BOTÃO SALVAR
+   ========================== */
+.mudarnome-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  background: #3b6ca8;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 8px;
+}
+
+.mudarnome-btn:hover:not(:disabled) {
+  background: #053f81;
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(5, 63, 129, 0.3);
+}
+
+.mudarnome-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* SPINNER */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+/* ==========================
+   RESPONSIVO
+   ========================== */
+@media (max-width: 768px) {
+  body { overflow: auto; }
+
+  .mudarnome-main {
+    padding: 16px 12px 80px 12px;
+  }
+
+  .mudarnome-title {
+    font-size: 20px;
+  }
+
+  .mudarnome-icone .material-icons {
+    font-size: 60px;
+  }
+}

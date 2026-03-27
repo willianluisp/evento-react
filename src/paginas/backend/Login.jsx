@@ -42,6 +42,7 @@ function Login() {
             if (dados.sucesso) {
                 // SALVA O NOME DO USUÁRIO NO NAVEGADOR
                 localStorage.setItem("usuario", dados.usuario);
+                localStorage.setItem("usuarioId", dados.id);
     
                 // vai para a tela home
                 navigate("/Perfil");
